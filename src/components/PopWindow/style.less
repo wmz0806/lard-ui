@@ -1,0 +1,102 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+// 这是方法调用时的外层容器
+.@{prefix}pop-window-main {
+  position: absolute;
+  z-index: 101;
+}
+
+// 这是 jsx 调用时的外层容器
+.@{prefix}pop-window-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+  .@{prefix}pop-window-inner {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 从下方弹出时, 比较特殊
+.@{prefix}pop-window-container-bottom {
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.@{prefix}pw-animate-none {
+  visibility: hidden;
+}
+
+/* 三种动画 */
+.@{prefix}pop-window-container-left,
+.@{prefix}pw-animate-enter-left{
+  transform: translate3d(-100%, 0, 0);
+}
+
+.@{prefix}pop-window-container-right,
+.@{prefix}pw-animate-enter-right{
+  transform: translate3d(100%, 0, 0);
+}
+
+.@{prefix}pop-window-container-top,
+.@{prefix}pw-animate-enter-top{
+  transform: translate3d(0, -100%, 0);
+}
+
+/* 动画 */
+.@{prefix}pw-animate-exit,
+.@{prefix}pw-animate-enter-active,
+.@{prefix}pw-animate-enter-active-done {
+  transform: translate3d(0, 0, 0);
+  transition: all ease-in;
+}
+
+
+/* 三种动画 */
+.@{prefix}pw-animate-exit-active-left{
+  transform: translate3d(-100%, 0, 0);
+}
+
+.@{prefix}pw-animate-exit-active-right{
+  transform: translate3d(100%, 0, 0);
+}
+
+.@{prefix}pw-animate-exit-active-top{
+  transform: translate3d(0, -100%, 0);
+}
+
+// 特殊, 下方的动画
+.@{prefix}pop-window-bottom-inner {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto !important;
+  max-height: 70%;
+  transform: translate3d(0, 100%, 0);
+  background-color: white;
+  overflow: auto;
+}
+
+.@{prefix}pw-animate-bottom-enter {
+  transform: translate3d(0, 100%, 0);
+}
+
+.@{prefix}pw-animate-bottom-exit,
+.@{prefix}pw-animate-bottom-enter-active,
+.@{prefix}pw-animate-bottom-enter-done {
+  transform: translate3d(0, 0, 0);
+  transition: all ease-in;
+}
+
+.@{prefix}pw-animate-bottom-exit-active{
+   transform: translate3d(0, 100%, 0);
+}
+
+
+
+
+

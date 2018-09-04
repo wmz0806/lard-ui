@@ -1,0 +1,51 @@
+---
+name: Toolbar
+menu: Components
+---
+import Component from "react-component-component";
+import { Playground, PropsTable } from 'docz'
+import Toolbar from './index'
+import Button from '../Button'
+
+# Toolbar
+工具栏
+
+### 何时使用
+无
+
+
+## 属性
+
+<PropsTable of={Toolbar} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground className={'hideHtml'}>
+<Button onClick={(e) => {this.e.show(e.target)}}>显示 Bottom Toolbar</Button>
+<br />
+<br />
+<Button  onClick={(e) => {this.e.show(e.target, 'top', 0, 0)}}>显示 Top Toolbar</Button>
+
+<Toolbar ref={(e) => (this.e = e)}>
+        <Toolbar.Item>
+          <div style={{padding: '0 0.3rem'}}>
+              选项A
+          </div>
+        </Toolbar.Item>
+        <Toolbar.Item>
+          <div style={{padding: '0 0.3rem'}}>
+               选项B
+           </div>
+        </Toolbar.Item>
+      </Toolbar>
+</Playground>
+
+
+
+

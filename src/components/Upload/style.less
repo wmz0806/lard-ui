@@ -1,0 +1,113 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}upload-container {
+  width: 170 * @unit;
+  height: 170 * @unit;
+  background-color: #fff;
+  position: relative;
+  border: 1px #d1d1d1 dashed;
+  border-radius: 6 * @unit;
+  > div {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+  }
+
+  .@{prefix}upload-bg-container{
+    background-color: #fff;
+    background-size: cover;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .@{prefix}icon{
+      vertical-align: middle;
+    }
+  }
+
+  .@{prefix}upload-input-container {
+    z-index: 3;
+    overflow: hidden;
+    cursor: pointer;
+
+    > input {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  .@{prefix}upload-loading-container{
+    z-index: 4;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .@{prefix}upload-result-container{
+    z-index: 2;
+  }
+
+}
+
+
+.@{prefix}upload-result-container {
+  position: relative;
+  width: 170 * @unit;
+  height: 170 * @unit;
+  background-color: #fff;
+  border-radius: 6 * @unit;
+  .@{prefix}item-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 6 * @unit;
+  }
+
+  .@{prefix}item-close{
+    position: absolute;
+    top: 4 * @unit;
+    right: 4 * @unit;
+    font-size: 0;
+    cursor: pointer;
+    &:before{
+      content: '';
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      position: absolute;
+    }
+    //.icon-wrapper span{
+    //  color: #666;
+    //  font-size: 0.34rem /* 34/75 */;
+    //}
+  }
+}
+
+.@{prefix}upload-queue{
+  .@{prefix}upload-result-container{
+    float: left;
+    margin-right: 30 * @unit;
+  }
+
+  .@{prefix}upload-container{
+    float: left;
+  }
+}
+

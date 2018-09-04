@@ -1,0 +1,57 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}switch-container {
+  display: inline-block;
+  position: relative;
+  height: 60 * @unit;
+  width: 106 * @unit;
+  border-radius: 60 * @unit;
+  background-color: #BFBFBF;
+  z-index: 1;
+
+  .@{prefix}switch-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #3B4FA0;
+    border-radius: 60 * @unit;
+
+    transition: all .2s ease-in;
+
+    &.@{prefix}switch-loading {
+      background-color: #7684BD;
+
+      .@{prefix}switch-dot:after {
+        content: '';
+        position: absolute;
+        top: 6 * @unit;
+        right: 6 * @unit;
+        width: 44 * @unit;
+        height: 44 * @unit;
+        transform: rotate(45deg);
+        border: 2 * @unit solid transparent;
+        border-radius: 60 * @unit;
+        border-top-color: #7684BD;
+        animation: rotateLoop 1.5s linear infinite both;
+      }
+    }
+
+    /* 圆点 */
+    .@{prefix}switch-dot {
+      content: '';
+      position: absolute;
+      right: 0 * @unit;
+      top: 0 * @unit;
+      bottom: 0 * @unit;
+      width: 60 * @unit;
+      border-radius: 100%;
+      background-color: white;
+      border: 2 * @unit solid;
+      transition: all .2s ease-in;
+      z-index: 2;
+    }
+  }
+}

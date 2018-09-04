@@ -1,0 +1,60 @@
+---
+name: Swiper
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Swiper from './index'
+import LImg from '../LImg/index';
+import Loading from '../Loading/index';
+
+# Swiper
+
+轮播图
+
+### 何时使用
+轮播图
+
+## 属性
+
+<PropsTable of={Swiper} />
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+
+<Swiper>
+  <Swiper.Item>
+       {
+       LImg.get({ 
+           width: 100,
+           unit: '%',
+            src: 'https://www.baidu.com/img/bd_logo1.png',
+           lazy: true,
+            imgShade: false,
+            clickReload: false,
+            defLoading: (<Loading size={0.44}/>)
+              })
+       }
+  </Swiper.Item>
+  <Swiper.Item>
+         {
+         LImg.get({ 
+             width: 100,
+             unit: '%',
+              src: 'https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_x2_9d645d9.png',
+             lazy: true,
+              imgShade: false,
+              clickReload: false,
+              defLoading: (<Loading size={0.44}/>)
+                })
+         }
+    </Swiper.Item>
+</Swiper>
+
+</Playground>
+
+
+

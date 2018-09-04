@@ -1,0 +1,45 @@
+---
+name: Icon
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Icon from './index'
+import Map from './Map.props'
+
+# Icon
+
+图标
+
+### 何时使用
+图标
+
+
+## 属性
+
+<PropsTable of={Icon} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  <div className={'f-cb, f-tac'}>
+  {
+    Map.data.map((name, index) => {
+        return <div key={index} className={'f-fl'} style={{padding: '30px 10px', width: '25%'}}>
+            <Icon size={0.6} name={name}/>
+            <div style={{'marginTop': '10px'}}>{name}</div>
+        </div>
+    })
+    }
+  </div>
+</Playground>
+
+
+
+

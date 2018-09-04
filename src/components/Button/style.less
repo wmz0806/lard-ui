@@ -1,0 +1,147 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+@disabled-color: @color-dcdcdc;
+@disabled-text-color: #fff;
+
+//名称
+@name: blue yellow orange red;
+
+//主颜色 背景和边框
+@color: @default-color-blue @default-color-yellow @default-color-orange @default-color-red;
+
+// 文字颜色
+@text-color: #fff #fff #fff #fff;
+
+@count: length(@name);
+
+.loop( @i:1 ) when ( @i <= @count ) {
+  @n: extract(@name, @i);
+  @c: extract(@color, @i);
+  @t: extract(@text-color, @i);
+
+  .@{prefix}button-@{n} {
+    background-color: @c;
+    color: @t;
+    border-color: @c;
+    &.@{prefix}button-clear {
+      color: @c;
+      &:hover {
+        color: @c;
+      }
+    }
+    &:hover {
+      color: @t;
+    }
+  }
+  .loop((@i + 1));
+}
+
+
+.@{prefix}button {
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  display: inline-block;
+  height: 90 * @unit;
+  line-height: 90 * @unit;
+  border-radius: 2 * @unit;
+  text-align: center;
+  font-size: 30 * @unit;
+  padding-left: 30 * @unit;
+  padding-right: 30 * @unit;
+  position: relative;
+  border: none;
+  border-color: extract(@color, 1);
+  background-color: extract(@color, 1);
+  color: extract(@text-color, 1);
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+
+  .@{prefix}-icon {
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .@{prefix}loading-view {
+    span {
+      display: inline-block;
+      margin-left: 15 * @unit;
+    }
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    border-radius: 2 * @unit;
+    border: 1px solid;
+    border-color: inherit;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    display: block;
+  }
+  &:active {
+    opacity: 0.92;
+  }
+  &.@{prefix}button-clear {
+    background-color: transparent;
+    color: extract(@color, 1);
+  }
+  &.@{prefix}button-no-border:before {
+    display: none;
+  }
+  &.@{prefix}button-full {
+    width: 100%;
+    display: block;
+  }
+  &.@{prefix}button-br50 {
+    border-radius: 45 * @unit;
+    &:before {
+      border-radius: 45 * @unit;
+    }
+  }
+  &.@{prefix}button-small {
+    height: 60 * @unit;
+    line-height: 60 * @unit;
+    font-size: 24 * @unit;
+    &.@{prefix}button-br50 {
+      border-radius: 30 * @unit;
+    }
+  }
+  &.disabled {
+    cursor: not-allowed;
+    background-color: @disabled-color;
+    color: @disabled-text-color;
+    opacity: 1;
+    &:before {
+      border-color: @disabled-color;
+    }
+    &:hover, &:active {
+      opacity: 1;
+      color: @disabled-text-color;
+    }
+  }
+
+  &.disabledOpacity {
+    cursor: not-allowed;
+    opacity: 0.92;
+    &:hover, &:active {
+      opacity: 0.92;
+    }
+  }
+}
+
+.loop(1);
+
+

@@ -1,0 +1,51 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}accordion-container {
+  width: 100%;
+  text-align: left;
+  background-color: white;
+
+  .@{prefix}accordion-item {
+    width: 100%;
+    padding: 0 30 * @unit;
+    transition: .2s height linear;
+    overflow: hidden;
+
+    .@{prefix}accordion-item-header {
+      position: relative;
+      width: 100%;
+      height: 98 * @unit;
+      line-height: 98 * @unit;
+      font-size: 30 * @unit;
+
+      .@{prefix}accordion-header-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+        transition: all linear .2s;
+      }
+    }
+
+    .@{prefix}accordion-item-body {
+      position: relative;
+      padding: 30 * @unit 0;
+      font-size: 28 * @unit;
+      line-height: 30 * @unit;
+    }
+
+    /* 下划线 */
+    .@{prefix}accordion-item-body:after,
+    .@{prefix}accordion-item-header:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -30 * @unit;
+      right: -30 * @unit;
+      height: 2 * @unit;
+      background-color: #e5e5e5;
+    }
+  }
+}

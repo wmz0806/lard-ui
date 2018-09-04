@@ -1,0 +1,83 @@
+---
+name: Switch
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Switch from './index'
+
+# Switch
+
+开关  组件
+
+## Properties
+#### 组件 props
+
+<PropsTable of={Switch} />
+ 
+## 函数
+
+  1.  **setStatus**(status: boolean | 'loading')
+  >     将组件设置为 开启 || 关闭 || loading
+
+## Basic usage
+
+<Playground>
+ <div>普通用法</div>
+ <div>
+   <Switch 
+    status={false}
+    onClick={(e, status) => console.log(status)}
+   />
+ </div>
+
+ <div>直接设置状态</div>
+  <div>
+     <Switch 
+      ref={r => window._switch = r}
+      status={true}
+      onClick={(e, status) => {
+        console.log('show loading');
+        _switch.setStatus('loading')
+        if (status === false) {
+          setTimeout(() => {
+            console.log('请求完成');
+            _switch.setStatus(true);
+          }, 1000)
+        } else if (status === true) {
+          setTimeout(() => {
+            console.log('关闭完成');
+            _switch.setStatus(false);
+          }, 1000)
+        }
+        return false
+      }}
+     />
+  </div>
+  
+   <div>返回Promise resolve</div>
+    <div>
+      <Switch 
+       status={false}
+       onClick={(e, status) => {
+         console.log(e, status);
+         return new Promise((res, rej) => {
+           setTimeout(() => {res()}, 1000)
+         })
+       }}
+      />
+    </div>
+    
+   <div>返回Promise reject</div>
+    <div>
+      <Switch 
+       status={false}
+       onClick={(e, status) => {
+         console.log(e, status);
+         return new Promise((res, rej) => {
+           setTimeout(() => {rej()}, 1000)
+         })
+       }}
+      />
+    </div>
+</Playground>

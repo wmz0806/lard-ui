@@ -1,0 +1,159 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+/* header css */
+.@{prefix}tree-menu-header {
+  width: 100%;
+  height: 88 * @unit;
+  line-height: 88 * @unit;
+  font-size: 0;
+
+  background-color: white;
+  color: #666666;
+
+  li {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .@{prefix}t-m-h-text {
+      display: inline-block;
+      padding-right: 12 * @unit;
+      font-size: 30 * @unit;
+
+      vertical-align: top;
+    }
+
+    .@{prefix}t-m-h-triangle {
+      display: inline-block;
+      position: relative;
+      width: 10 * @unit;
+      height: 100%;
+
+      .@{prefix}t-m-h-triangle-inner {
+        position: absolute;
+        width: 100%;
+        height: 15 * @unit;
+        top: 10 * @unit;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+
+        border: 5 * @unit solid transparent;
+        border-top: 7 * @unit black solid;
+
+        transform: rotate(0);
+        transform-origin: center 20%;
+        transition: all linear .25s;
+      }
+    }
+
+    // 选中时
+    &.@{prefix}t-m-h-active {
+      color: #3B4FA0;
+      font-weight: bold;
+      .@{prefix}t-m-h-triangle {
+        .@{prefix}t-m-h-triangle-inner {
+          border-top-color: #3B4FA0;
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+}
+
+/* body css */
+.@{prefix}tree-menu-body-main {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .5);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s all linear;
+
+  z-index: 101;
+
+  .@{prefix}tree-menu-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    .@{prefix}tree-menu-body {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 700 * @unit;
+      max-height: 80%;
+
+      transform-origin: top center;
+
+      transition: all linear .25s;
+      transform: scaleY(0);
+
+      &.active{
+        transform: scaleY(1);
+      }
+
+      .@{prefix}t-m-b-list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+
+        color: #333;
+        text-align: left;
+
+        background-color: white;
+
+        transition: all .25s linear;
+
+        overflow-y: auto;
+
+        .@{prefix}t-m-b-item {
+          height: 98 * @unit;
+          line-height: 98 * @unit;
+
+          .@{prefix}t-m-b-item-text {
+            height: 100%;
+            width: 100%;
+            padding-left: 50 * @unit;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .@{prefix}t-m-b-item-active {
+          color: #3B4FA0;
+          background-color: #F8F8F8;
+          font-weight: bold;
+        }
+      }
+
+      .@{prefix}t-m-b-list-prev {
+        left: 100%;
+        transform: translateX(0);
+        transition: all linear .25s;
+      }
+
+    }
+  }
+}
+
+/* main css */
+.@{prefix}tree-menu {
+  width: 100%;
+  height: 88 * @unit;
+  position: relative;
+}

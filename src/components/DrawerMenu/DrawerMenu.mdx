@@ -1,0 +1,116 @@
+---
+name: DrawerMenu
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import DrawerMenu from './index'
+
+import Props from './interface/props'
+import Header from './interface/header.config'
+import Item from './interface/item.config'
+
+
+# DrawerMenu
+抽屉菜单 组件
+
+
+## Properties
+
+#### headerConfig
+<PropsTable of={Header} />
+
+#### itemConfig
+<PropsTable of={Item} />
+
+#### Props
+<PropsTable of={Props} />
+
+
+#### ref返回实例中调用的函数
+
+  1.  **show**()
+  >     打开组件
+  
+  2.  **hide**()
+  >     关闭组件
+
+
+#### 直接调用的静态函数 (DrawerMenu.method())
+
+  1.  **show**(props:Props)
+  >     打开组件
+  
+  2.  **hide**()
+  >     关闭组件
+
+## Basic usage
+
+<Playground>
+ <div>
+  <DrawerMenu
+    ref={r => window.drawerMenu = r}
+    isShow={false}
+    headerConfig={{
+      //image: 'https://macaw.goodsogood.com/machomepage/images/img2.png',
+      detail: (<div style={{textAlign: 'center', color: 'white'}}>我是详情</div>)
+    }}
+    lists={[
+      [
+        {icon: 'shouye', content: '首页', onClick: () => console.log('首页1')},
+        {icon: 'shouye', content: '首页123'},
+        {icon: 'shouye', content: '首页321'},
+        {icon: 'shouye', content: '首页323'},
+      ],
+      [
+        {icon: 'shouye', content: '首页654'},
+        {icon: 'shouye', content: '首页32', onClick: () => console.log('首页2')},
+        {icon: 'shouye', content: '首页321'},
+        {icon: 'shouye', content: '首页54'},
+      ],
+     [
+        {icon: 'shouye', content: '首页321'},
+        {icon: 'shouye', content: '首页32'},
+        {icon: 'shouye', content: '首页54'},
+        {icon: 'shouye', content: '首页32', onClick: () => console.log('首页3')},
+      ]
+    ]}
+    onClick={(e, index, subIndex, item) => console.log(e, index, subIndex, item, 'onClick 拦截')}
+    onHide={() => console.log('关闭')}
+    isAutoHidden={false}
+  />
+  
+  <div onClick={() => window.drawerMenu.show()}>打开menu (标签用)</div>
+  <div onClick={() => window.drawerMenu.hide()}>关闭menu, 需要zindex 高一点..</div>
+  
+  <div onClick={() => {
+    DrawerMenu.show({
+        lists: [
+                  [
+                    {icon: 'shouye', content: '首页', onClick: () => console.log('首页1')},
+                    {icon: 'shouye', content: '首页123', active: true},
+                    {icon: 'shouye', content: '首页321'},
+                    {icon: 'shouye', content: '首页323'},
+                  ],
+                  [
+                    {icon: 'shouye', content: '首页654'},
+                    {icon: 'shouye', content: '首页32', onClick: () => console.log('首页2')},
+                    {icon: 'shouye', content: '首页321'},
+                    {icon: 'shouye', content: '首页54'},
+                  ],
+                 [
+                    {icon: 'shouye', content: '首页321'},
+                    {icon: 'shouye', content: '首页32'},
+                    {icon: 'shouye', content: '首页54'},
+                    {icon: 'shouye', content: '首页32', onClick: () => console.log('首页3')},
+                  ]
+                ]
+    })
+  
+  }}>打开menu (直接调用方法)</div>
+ </div>
+</Playground>
+
+
+  
+

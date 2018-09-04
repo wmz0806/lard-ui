@@ -1,0 +1,39 @@
+---
+name: Aggregation
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Aggregation from './index'
+import Icon from '../Icon'
+
+# Aggregation
+聚合按钮
+
+### 何时使用
+无
+
+
+## 属性
+
+<PropsTable of={Aggregation} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  <Aggregation menus={[
+    { children: <Icon name={"shouye"}/>, onClick: () => { console.log('shouye') } },
+    { children: <Icon name={"dingdan"}/>, onClick: () => { console.log('dingdan') } },
+    { children: <Icon name={"gouwuche"}/>, onClick: () => { console.log('gouwuche') } },
+  ]}/>
+</Playground>
+
+
+
+

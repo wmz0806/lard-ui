@@ -1,0 +1,46 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+// 这是方法调用时的外层容器
+.@{prefix}button-group-main {
+  width: 100%;
+  padding: 30 * @unit 20 * @unit;
+  background-color: white;
+
+  .@{prefix}b-g-container {
+    width: 100%;
+    font-size: 0;
+
+    li {
+      display: inline-block;
+      height: 84 * @unit;
+      padding: 10 * @unit 10 * @unit;
+      line-height: 64 * @unit;
+      text-align: center;
+
+      .@{prefix}b-g-text {
+        padding: 0 30 * @unit;
+        border: 1px solid #D1D1D1;
+        color: #333333;
+        font-size: 26 * @unit;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &.b-g-active {
+          border-color: transparent;
+          color: white;
+          background-color: #3B4FA0;
+        }
+
+        &.b-g-disabled {
+          border-color: transparent;
+          color: white;
+          background-color: #DCDCDC;
+        }
+      }
+    }
+  }
+}

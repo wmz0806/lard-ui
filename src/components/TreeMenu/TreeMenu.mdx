@@ -1,0 +1,146 @@
+---
+name: TreeMenu
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import TreeMenuHeader from './components/TreeMenuHeader'
+import TreeMenuBody from './components/TreeMenuBody'
+import TreeMenu from './components/main'
+import Props from './interface/props'
+import HeaderConfig from './interface/header'
+import BodyConfig from './interface/body'
+import Btn from '../Button';
+
+import {syncData, asyncData} from './exampleData/data';
+import {data} from './exampleData/test-data';
+
+# TreeMenu
+
+下拉选项菜单
+
+## Properties 
+#### props
+<PropsTable of={Props} />
+
+#### HeaderConfig
+<PropsTable of={HeaderConfig} />
+
+#### BodyConfig
+<PropsTable of={BodyConfig} />
+      
+#### ref函数
+
+  1.  **getChoose**(): boolean[]
+  >     返回当前组件的选中状态
+  
+  2.  **setChoose**(config: boolean[] | number): void
+  >     传入数字, 设定只选中某一个, 或者传入数组, 设定整个组件的选中状态
+  
+  3.  **selectAll**(): void
+  >     多选选择器时, 全选 (忽略disabled 和 err 的选择状态)
+  
+  4.  **unselectAll**(): void
+  >     全不选 (忽略disabled 和 err 的选择状态)
+  
+  5.  **getAllSelectStatus**() : 0 | 1 | 2
+  >     多选选择器时, 获取全选状态. 0: 全都没选中; 1: 部分选中; 2: 全都选中了 (忽略disabled 和 err 的选择状态)
+
+
+
+## Basic usage
+#### 整体用法
+<Playground>
+  <div onClick={() => window._treeMenu.show(1)}>激活第二个/</div>
+  <TreeMenu
+    ref={r => window._treeMenu = r}
+    headerConfig={[
+      {content: '甜点饮品'},
+      {content: '附近', isActive: false},
+      {content: '呵呵呵'},
+    ]}
+    headerClick={(e, index) => console.log(index)}
+    bodyData={data}
+    bodyClick={(e, listIndex, index, item, data, activeIndex, cb) => {
+      console.log(listIndex);
+      console.log(index);
+      console.log(item);
+      console.log(activeIndex);
+      if (item.children && item.children.length) {
+        return Promise.resolve(item.children)
+      } else {
+        if (activeIndex.length >= 10) {
+          window._treeMenu.hide();
+          return Promise.resolve(null)
+        }
+        return Promise.resolve([
+          {label: 'child', value: 'child'},
+          {label: 'child', value: 'child'},
+          {label: 'child', value: 'child'},
+          {label: 'child', value: 'child'},
+          {label: 'child', value: 'child'},
+        ])
+      }
+    }}
+    isAsync={true}
+  />
+</Playground>
+
+#### TreeMenuBody 以及 TreeMenuHeader 的分离用法
+<Playground>
+ <div>body用法, 这是同步情况下(数据都在)</div>
+ <Btn onClick={() => {
+  TreeMenuBody.show({
+      top: '3rem',
+      onClick: (e, listIndex, index, item, data, activeIndex, cb) => {
+        console.log(listIndex, index, item, data, activeIndex);
+      },
+      isAsync: false,
+      data: syncData
+    })
+ }}>打开</Btn>
+ <Btn onClick={() => TreeMenuBody.hide()}>关闭</Btn>
+ 
+  <div>body用法, 这是异步情况下, 使用回调添加数据(数据需要请求)</div>
+  <Btn onClick={() => {
+   TreeMenuBody.show({
+       top: '3rem',
+       data: asyncData,
+       onClick: (e, listIndex, index, item, data, activeIndex, cb) => {
+         setTimeout(() => {
+           cb(
+             [
+               {label: listIndex + '+' + index, value: '11'},
+               {label: 'children', value: '11'},
+               {label: 'children', value: '11'},
+               {label: 'children', value: '11'},
+               {label: 'children', value: '11'},
+               {label: 'children', value: '11'},
+               {label: 'children', value: '11'},
+             ]
+           );
+         }, 200)
+         console.log(listIndex, index, item, data, activeIndex);
+       },
+       isAsync: true
+     })
+  }}>打开</Btn>
+  <Btn onClick={() => TreeMenuBody.hide()}>关闭</Btn>
+ 
+ <div>header用法, 这是数据都存在的情况下</div>
+ <div>
+  <TreeMenuHeader
+    data={[
+      {content: '甜点饮品', isActive: true},
+      {content: '附近'},
+      {content: '呵呵呵'},
+    ]}
+  />
+ </div>
+</Playground>
+
+
+  
+  
+
+

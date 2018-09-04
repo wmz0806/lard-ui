@@ -1,0 +1,121 @@
+---
+name: Modal
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Modal from './index'
+
+# Modal
+
+模态框
+
+## Properties 
+  空
+ 
+## 函数
+  0.  **通用参数: Modal** \[confirm | alert | dialog](options)
+  >     以下三个函数都可以带有 title, content, options 字段
+      options.title?: React.ReactNode | string // 头
+      options.content?: React.ReactNode | string // 内容
+      options.options: { // 其他参数
+        className?: string // 整体className
+        titleCN?: string // 头className
+        contentCN?: string // 内容 className
+        animateTime?: number // 退出动画时间
+        animateName?: string // 自定义动画 className
+      } 
+      
+  0.  **通用参数: Button** 
+  >     有Button字段需要传递时, 参考该 Interface
+      color?: string // 按钮文字颜色
+      backColor?: string // 按钮背景颜色
+      content?: React.ReactNode | string // 按钮内容
+      className?: string // 按钮特定的 className
+      onClick?: function // 按钮回调
+      autoClose?: boolean // 点击按钮后是否需要自动关闭?
+
+  1.  **confirm**(options)
+  >     弹出 confirm modal
+      options: {} (继承 通用参数: Modal 三个字段)
+      options.cancelBtn: (继承 通用参数: Button 四个字段)
+      options.sureBtn: (继承 通用参数: Button 四个字段)
+  
+  2.  **alert**(options)
+  >     弹出 alert modal
+      options: {} (继承 通用参数: Modal 三个字段)
+      options.sureBtn: (继承 通用参数: Button 四个字段)
+      
+
+  3.  **dialog**(options)
+  >     弹出自定义 modal
+      options: {} (继承 通用参数: Modal 三个字段)
+      options.buttons: [btn, btn, btn...] (是一个数组) (btn 继承 通用参数: Button 四个字段)
+  
+  4.  **hide**()
+  >     隐藏最后一个 modal
+  
+  5.  **hideAll**()
+  >     隐藏所有 modal
+  
+  6.  **destroy**()
+  >     销毁该组件(将不能再被唤起)
+
+## Basic usage
+
+<Playground>
+  <div>
+    <div 
+      onClick={() => Modal.confirm({
+        title: '第一个',
+        content: '第一个框框',
+        sureBtn: {
+          autoClose: false, 
+          onClick: () => {
+            console.log('确定'); 
+            Modal.alert({title: '第二个', content: '框中框'})
+          }}
+      })}
+    >
+      confirm 框框
+    </div>
+    <div 
+      onClick={() => Modal.alert({
+        title: 'alert', 
+        content: '发了多少空间发链接荆防颗粒?',
+        sureBtn: {
+          content: '要得',
+          color: '#999',
+          backColor: 'black',
+          onClick: () => {console.log('要得')}
+        },
+        options: {
+          className: 'test-main',
+          titleCN: 'test-title',
+          contentCN: 'test-content',
+          animateTime: 50
+        }
+      })}>
+      alert 框框
+    </div>
+    <div onClick={() => {
+      Modal.dialog({
+        title: <div style={{color: 'red'}}>header</div>,
+        content: <div style={{paddingTop: '1rem'}}>我是胸部</div>,
+        buttons: [
+          {content: '取消'},
+          {content: <div>jsx</div>, onClick: () => console.log('jsx')}
+        ],
+        options: {
+          className: 'test-main',
+          titleCN: 'test-title',
+          contentCN: 'test-content',
+          animateTime: 100
+        }
+      })
+    }}>
+      dialog 框框
+    </div>
+  </div>
+ 
+</Playground>

@@ -1,0 +1,130 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+@size-171: 171 * @unit;
+@size-114: 114 * @unit;
+@size-44: 44 * @unit;
+@size-29: 29 * @unit;
+
+.@{prefix}loading {
+  display: block;
+  margin: auto;
+  position: relative;
+
+  i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  em {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    &.@{prefix}loading-animate {
+      animation: rotateLoop 1s linear infinite both;
+    }
+  }
+
+  &.@{prefix}loading-171 {
+    width: @size-171;
+    height: @size-171;
+    i {
+      background-image: url(./images/pan-171.png);
+    }
+    em {
+      background-image: url(./images/logo-171.png);
+    }
+    span {
+      background-image: url(./images/circle-171.png);
+    }
+  }
+
+  &.@{prefix}loading-114 {
+    width: @size-114;
+    height: @size-114;
+    i {
+      background-image: url(./images/pan-114.png);
+    }
+    em {
+      background-image: url(./images/logo-114.png);
+    }
+    span {
+      background-image: url(./images/circle-114.png);
+    }
+  }
+
+  &.@{prefix}loading-44 {
+    width: @size-44;
+    height: @size-44;
+    i {
+      background-image: url(./images/pan-44.png);
+    }
+    em {
+      background-image: url(./images/logo-44.png);
+    }
+    span {
+      background-image: url(./images/circle-44.png);
+    }
+  }
+
+  &.@{prefix}loading-29 {
+    width: @size-29;
+    height: @size-29;
+    i {
+      background-image: url(./images/pan-29.png);
+    }
+    em {
+      background-image: url(./images/logo-29.png);
+    }
+    span {
+      background-image: url(./images/circle-29.png);
+    }
+  }
+
+  & .hidden{
+    display: none !important;
+  }
+}
+
+.@{prefix}font-loading {
+  font-size: 0;
+  text-align: center;
+  .@{prefix}font-loading-box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .@{prefix}font-loading-mk {
+    position: static;
+    transform: scale(0.6);
+  }
+
+  .@{prefix}font-loading-border {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    //border-radius: 50%;
+    &.@{prefix}loading-animate {
+      animation: rotateLoop 1s linear infinite both;
+    }
+  }
+}
+

@@ -1,0 +1,55 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}action-sheet-wrapper {
+  z-index: 102;
+
+  .@{prefix}action-sheet-container {
+    width: 100%;
+    padding: .2rem;
+    font-size: .36rem;
+    line-height: 1.1rem;
+    text-align: center;
+
+    .@{prefix}a-s-item,
+    .@{prefix}a-s-cancel {
+      position: relative;
+      padding: 0 .4rem;
+      color: #3B4FA0;
+    }
+
+    .@{prefix}a-s-cancel,
+    .@{prefix}a-s-main {
+      border-radius: .2rem;
+      background-color: white;
+    }
+
+    .@{prefix}a-s-item:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    .@{prefix}a-s-item:last-child:after {
+      border-bottom: none;
+    }
+
+    .@{prefix}a-s-cancel {
+      margin-top: .2rem;
+    }
+
+    .@{prefix}a-s-delete {
+      color: #E4393C;
+    }
+
+    .@{prefix}a-s-disabled {
+      color: @text-color4;
+    }
+  }
+}
+

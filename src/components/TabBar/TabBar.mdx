@@ -1,0 +1,60 @@
+---
+name: TabBar
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import TabBar from './index'
+
+import md from './images/md.png';
+import mdActive from './images/md-active.png';
+import help from './images/help.png';
+import helpActive from './images/help-active.png';
+import my from './images/my.png';
+import myActive from './images/my-active.png';
+import mc from './images/mc.png';
+import mcActive from './images/mc-active.png';
+
+import Config from './interface/Config.props';
+import Props from './interface/Props.props';
+
+# TabBar
+
+选项卡 (下方导航栏) 组件
+
+## Properties
+
+#### list item 参数
+<PropsTable of={Config} />
+
+#### 组件 props
+<PropsTable of={Props} />
+ 
+## 函数
+
+  1.  **setActiveItem**(index: number)
+  >     将某一个item强制设定为active
+
+## Basic usage
+
+<Playground>
+  <TabBar
+    list={[
+      {
+        defaultImg: mc, 
+        activeImg: mcActive, 
+        text: '首页', 
+        isBigActiveImg: true,
+        onClick: (e, index, item) => console.log('点击首页') 
+      },
+      {
+        icon: 'fanhui',
+        text: '返回',
+        isBigActiveImg: true,
+      },
+      {defaultImg: md, activeImg: mdActive, text: '门店'},
+      {defaultImg: help, activeImg: helpActive, text: '帮助'},
+      {defaultImg: my, activeImg: myActive, text: '我的', isBigActiveImg: true},
+    ]}
+  />
+</Playground>

@@ -1,0 +1,51 @@
+---
+name: Toast
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Toast from './index'
+import ToastProps from './Map.props'
+import Button from '../Button/index'
+
+# Toast
+
+提醒弹框
+
+### 何时使用
+提醒弹框
+
+
+## 属性
+
+<PropsTable of={ToastProps} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  <Button onClick={() => { Toast.show('普通的文字提示'); }}>普通的文字提示</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.success('成功'); }}>成功</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.warning('警告'); }}>警告</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.error('错误'); }}>错误</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.busy('繁忙'); }}>繁忙</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.wifi('没有网络'); }}>没有网络</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.loading('加载中', 0, {shade: false}); }}>取消遮罩的loading</Button>
+  <br/><br/>  
+  <Button onClick={() => { Toast.hideLoading(); }}>关闭loading</Button>
+</Playground>
+
+
+
+

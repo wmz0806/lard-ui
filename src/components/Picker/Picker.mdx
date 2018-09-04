@@ -1,0 +1,117 @@
+---
+name: Picker
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Picker from './index'
+import Button from '../Button'
+import Map from './Map.props'
+
+
+# Picker
+
+
+### 何时使用
+
+
+## 属性
+
+<PropsTable of={Picker} />
+
+## 代码演示
+
+### 一般演示
+  >     const data = [
+                     [
+                       {label: '王', value: '王'},
+                       {label: '张', value: '张'},
+                       {label: '李', value: '李'},
+                     ],
+                     [
+                       {label: '麻子', value: '麻子'},
+                       {label: '三', value: '三'},
+                     ]
+                 ]
+                           
+<Playground>
+  <div style={{width: "100%", height: "504px", transform: "translate3d(0,0,0)"}}>
+    <Button onClick={() => {this.e1.show();}}>显示基本</Button>
+    <Picker
+        ref={e1 => (this.e1 = e1)}
+        data={Map.data1}
+      />
+  </div>
+</Playground>
+
+
+### 级联演示
+  >     const data = [
+                         {
+                           label: '北京市', value: '北京市', children: [
+                             {
+                               label: '北京市', value: '北京市', children: [
+                                 {label: '朝阳区', value: '朝阳区'},
+                                 {label: '海淀区', value: '海淀区'},
+                                 {label: '东城区', value: '东城区'},
+                                 {label: '西城区', value: '西城区'}
+                               ]
+                             }
+                           ]
+                         },
+                         {
+                           label: '辽宁省', value: '辽宁省', children: [
+                             {
+                               label: '沈阳市', value: '沈阳市', children: [
+                                 {label: '沈河区', value: '沈河区'},
+                                 {label: '浑南区', value: '浑南区'},
+                                 {label: '沈北新区', value: '沈北新区'},
+                               ]
+                             },
+                             {
+                               label: '本溪市', value: '本溪市', children: [
+                                 {label: '溪湖区', value: '溪湖区'},
+                                 {label: '东明区', value: '东明区'},
+                                 {label: '桓仁满族自治县', value: '桓仁满族自治县'},
+                               ]
+                             }
+                           ]
+                         },
+                         {
+                           label: '云南省', value: '云南省', children: [
+                             {
+                               label: '昆明市', value: '昆明市', children: [
+                                 {label: '五华区', value: '五华区'},
+                                 {label: '官渡区', value: '官渡区'},
+                                 {label: '呈贡区', value: '呈贡区'},
+                               ]
+                             }
+                           ]
+                         },
+                       ]
+                           
+<Playground>
+  <div style={{width: "100%", height: "504px", transform: "translate3d(0,0,0)"}}>
+    <Button onClick={() => {this.e2.show();}}>显示级联</Button>
+    <Picker
+        ref={e2 => (this.e2 = e2)}
+        type={'cascade'}
+        data={Map.data2}
+      />
+  </div>
+</Playground>
+
+
+### 日期演示
+        
+<Playground>
+  <div style={{width: "100%", height: "504px", transform: "translate3d(0,0,0)"}}>
+    <Button onClick={() => {this.e3.show();}}>显示日期</Button>
+    <Picker
+        ref={e3 => (this.e3 = e3)}
+        type={'date'}
+        min={new Date('2004-08-06')}
+        max={new Date('2018-08-010')}
+      />
+  </div>
+</Playground>

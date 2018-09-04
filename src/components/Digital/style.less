@@ -1,0 +1,51 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+@height: 60;
+
+@height-unit: @height * @unit;
+
+.@{prefix}digital-box {
+  height: @height-unit;
+
+  .@{prefix}digital-left, .@{prefix}digital-right {
+    width: 78 * @unit;
+    height: 100%;
+    color: #333;
+    background-color: #f7f7f7;
+    border-radius: @height / 2 * @unit 0 0 @height / 2 * @unit;
+    text-align: center;
+    display: block;
+    font-size: 24 * @unit;
+    border: none;
+    cursor: pointer;
+    &.disabled {
+      cursor: not-allowed;
+      color: #e5e5e5;
+    }
+  }
+
+  .@{prefix}digital-input {
+    display: block;
+    width: 78 * @unit;
+    height: 100%;
+    line-height: @height-unit;
+    color: #333333;
+    margin-left: 2 * @unit;
+    margin-right: 2 * @unit;
+    font-size: 30 * @unit;
+    border: none;
+    background-color: #f7f7f7;
+    text-align: center;
+
+    &[disabled]{
+      cursor: not-allowed;
+      //  color: #E5E5E5;
+    }
+  }
+
+  .@{prefix}digital-right {
+    border-radius: 0 @height / 2 * @unit @height / 2 * @unit 0;
+  }
+}

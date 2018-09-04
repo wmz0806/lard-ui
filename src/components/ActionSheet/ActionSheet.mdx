@@ -1,0 +1,63 @@
+---
+name: ActionSheet
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import ActionSheet from './index'
+
+
+# ActionSheet
+
+操作面板
+
+## 属性 
+  <PropsTable of={ActionSheet} />
+  
+## 函数
+1
+
+### Basic usage
+
+<Playground>
+  <div
+    onClick={
+      () => {
+        ActionSheet.show({
+          list: [
+            {content: '编辑内容'},
+            {content: '2345', disabled: true},
+            {content: '543'},
+            {content: '点我也可以关闭', isDelete: true},
+            {content: '54376'},
+            {content: '54345'},
+            {content: '呵呵', isCancel: true},
+          ],
+          onHide: () => console.log('hide')
+        })
+      }
+    }
+  >
+    点击打开第一种呵呵呵
+  </div>
+  
+  <div
+      onClick={
+        () => {
+          ActionSheet.show({
+            list: [
+              {content: '第二种 呵呵呵', color: 'green', onClick: () => console.log('呵呵呵')},
+              {content: '呵呵额呵呵呵123123123反倒是客户会计师的考虑放假', disabled: true},
+              {content: '点我也可以关闭', isDelete: true},
+              {content: '第二种'},
+              {content: '543'},
+              {content: '呵呵'},
+            ],
+          })
+        }
+      }
+    >
+      点击打开第二种呵呵呵
+    </div>
+</Playground>
+

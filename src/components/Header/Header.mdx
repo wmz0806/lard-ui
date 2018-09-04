@@ -1,0 +1,129 @@
+---
+name: Header
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz';
+import Header, {setDefaultLeftIcon, SearchHeader} from './index';
+
+import ButtonProps from './interface/Btn.props';
+import SimpleProps from './interface/Simple.props';
+import SearchConfigProps from './interface/SearchConfig.props';
+import SearchHeaderProps from './interface/Search.props';
+
+
+import title from './images/title.png';
+import rightImg from './images/right-button.png';
+
+# Header
+
+Header组件(普通header & 带搜索栏)
+
+
+## 普通的Header属性
+
+#### interface of Btn
+<PropsTable of={ButtonProps} />
+
+#### Header Props
+<PropsTable of={SimpleProps} />
+
+## Search 框 Header属性
+
+#### interface of SearchConfig
+<PropsTable of={SearchConfigProps} />
+
+#### SearchHeader Props
+<PropsTable of={SearchHeaderProps} />
+
+## Search Header 函数
+
+  1.  **setActive**(isActive: boolean)
+  >     将他设置为激活 | 非激活状态
+
+  2.  **getInputRef**(): return ref
+  >     获取到input 节点
+
+## 代码演示
+
+### search header
+<Playground>
+  <SearchHeader 
+    leftBtnConfig={{
+      icon: 'fanhui',
+      onClick: () => console.log('点击返回')
+    }}
+    searchConfig={{
+      onChange: (e, value) => console.log('change', value),
+      onChangeDelay: 500,
+      onBlur: (e, val) => console.log('blur', val),
+      onFocus: (e, val) => console.log('focus', val),
+      onCancel: (e, val) => console.log('cancel', val),
+      onClick: (e, val) => console.log('click', val),
+      onKeyDown: (e, val) => console.log('keyDown', val),
+      placeholder: 'placeholder',
+      searchValue: '默认value'
+    }}
+    rightBtnConfig={{
+      icon: 'cha',
+      onClick: () => {}
+    }}
+    ref={r => window.SearchHeader = r}
+  />
+  <div onClick={() => window.SearchHeader.setActive(true)}>点击激活</div>
+  <div onClick={() => window.SearchHeader.setActive(false)}>点击不激活</div>
+</Playground>
+
+### 普通header
+
+<Playground>
+  <div>{ setDefaultLeftIcon('heihei') }</div>
+ 
+  <Header
+    leftBtnConfig={{
+      icon: 'fanhui',
+      onClick: () => console.log('点击返回')
+    }}
+  >普通的header</Header>
+  
+  <Header
+    leftBtnConfig={{
+      content: '返回',
+      onClick: () => console.log('点击返回')
+    }}
+    rightBtnConfig={[
+      {
+        content: '文',
+        onClick: () => console.log('第一个'),
+        className: 'example-header-text'
+      },
+     {
+        content: '文字',
+        onClick: () => console.log('第一个'),
+        className: 'example-header-text'
+     },
+      {
+        icon: 'fanhuidingbu',
+        onClick: () => console.log('呵呵')
+      },
+    ]}
+    style={{outline: '1px solid gray'}}
+  >
+    第二个
+  </Header>
+    
+  <Header
+    titleConfig={{
+      img: title
+    }}
+    rightBtnConfig={[
+      {img: rightImg}
+    ]}
+  />
+</Playground>
+
+
+
+
+
+

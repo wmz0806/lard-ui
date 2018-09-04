@@ -1,0 +1,137 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+/* 外层容器部分 */
+.@{prefix}text-field-wrapper {
+  width: 100%;
+
+  .@{prefix}t-f-input {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 88 * @unit;
+    line-height: 88 * @unit;
+
+    input {
+      width: 100%;
+      height: 100%;
+    }
+
+    .@{prefix}t-f-input-icon {
+      position: absolute;
+      top: 0;
+      right: 15 * @unit;
+      height: 100%;
+
+      div {
+        float: right;
+        height: 100%;
+        width: 44 * @unit;
+        margin-left: 12 * @unit;
+        line-height: 88 * @unit;
+      }
+    }
+
+    .@{prefix}t-f-input-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #E5E5E5;
+
+      .@{prefix}t-f-input-line-inner {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+        transition: all linear .25s;
+      }
+    }
+
+    .@{prefix}t-f-v-msg {
+      position: absolute;
+      top: 88 * @unit;
+      width: 100%;
+      height: 40 * @unit;
+      line-height: 40 * @unit;
+      font-size: 26 * @unit;
+    }
+  }
+
+  .@{prefix}t-f-ta {
+    width: 100%;
+    font-size: 0;
+    background-color: #F8F8F8;
+    overflow: hidden;
+
+    textarea {
+      width: 100%;
+      padding: 20 * @unit;
+      line-height: 45 * @unit;
+      font-size: 30 * @unit;
+      background-color: #F8F8F8;
+    }
+
+    .@{prefix}t-f-ta-footer {
+      position: relative;
+      width: 100%;
+      height: 44 * @unit;
+      line-height: 26 * @unit;
+      font-size: 26 * @unit;
+
+      .@{prefix}t-f-ta-err {
+        position: absolute;
+        top: 0;
+        left: 20 * @unit;
+        right: 100 * @unit;
+        height: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .@{prefix}t-f-ta-count {
+        position: absolute;
+        top: 0;
+        right: 20 * @unit;
+        height: 100%;
+        color: #999;
+      }
+    }
+  }
+
+  input, textarea {
+    border: none;
+    outline: none;
+    color: #3B4FA0;
+    //text-shadow: 0 0 0 #333;
+    //-webkit-text-fill-color: transparent;
+    -webkit-appearance: none;
+  }
+  input::placeholder,
+  input::-webkit-input-placeholder,
+  textarea::placeholder,
+  textarea::-webkit-input-placeholder {
+    color: #999999;
+    //text-shadow: 0 0 0 #999999;
+    //-webkit-text-fill-color: transparent;
+    -webkit-appearance: none;
+  }
+
+  &.@{prefix}t-f-shake {
+    animation: text-field-shake .4s forwards linear;
+  }
+}
+
+@keyframes text-field-shake {
+  0% {transform: translateX(0%)}
+  10% {transform: translateX(-1%)}
+  30% {transform: translateX(1%)}
+  50% {transform: translateX(-1%)}
+  70% {transform: translateX(1%)}
+  90% {transform: translateX(-1%)}
+  100% {transform: translateX(0%)}
+}

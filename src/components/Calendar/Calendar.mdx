@@ -1,0 +1,54 @@
+---
+name: Calendar
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Calendar from './index'
+
+## Basic usage
+
+<Playground>
+  
+  <Calendar 
+    ref={r => window.Calendar = r} 
+    beginDate={'2018-1-5'} 
+    endDate={'2018-10-12'} 
+    disableDate={['2018-5-10']}
+    chooseDate={['2018-5-1']}
+    onChoose={(date) => console.log(date)}
+  />
+  <div onClick={() => {window.Calendar.goPrevMonth()}}>去上一个月</div>
+  <div onClick={() => {window.Calendar.goNextMonth()}}>去下一个月</div>
+  <div onClick={() => {window.Calendar.setDate(['2018-3-15', '2018-3-16'])}}>设置选中 2018 - 3 - 15 & 16 </div>
+  <div onClick={() => {window.Calendar.setMonth('2018-1-1')}}>跳转到 2018 - 1 月份</div>
+  <div onClick={() => {window.Calendar.setMonth('2018-10-1')}}>跳转到 2018 - 10 月份</div>
+</Playground>
+
+
+# Calendar
+
+日历组件
+
+## Properties
+
+<PropsTable of={Calendar} />
+
+## 函数
+
+  1.  **goPrevMonth**()
+  >     去上一个月
+  
+  2.  **goNextMonth**()
+  >     去下一个月
+
+  3.  **setDate**(options)
+  >     设置选中的时间
+      options: {Date[] | string[]} (注意, string类型需要用 - / . 隔开)
+  
+  4.  **setMonth**(options)
+  >     设置当前显示的月份
+      options: {Date[] | string[]} (注意, string类型需要用 - / . 隔开)
+
+
+

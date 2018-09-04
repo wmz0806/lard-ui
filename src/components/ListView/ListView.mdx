@@ -1,0 +1,45 @@
+---
+name: ListView
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import ListView, {FooterLoading, FooterNoneData} from './index'
+import {ds, renderRow} from './ListView.props'
+
+
+# ListView
+
+### 何时使用
+
+
+## 属性
+
+<PropsTable of={ListView} />
+
+## 代码演示
+
+### 一般演示
+<Playground>
+ <div style={{width: '100%', height: '300px', position: 'relative'}}>
+  <ListView 
+    dataSource={ds.cloneWithRows([0,1,2,3,4,5])}
+    renderRow={(d) => renderRow(d)}
+    renderFooter={() => <FooterNoneData/>}
+  />
+ </div>
+</Playground>
+
+### 下拉刷新演示
+<Playground>
+ <div style={{width: '100%', height: '300px', position: 'relative'}}>
+  <ListView
+    dataSource={ds.cloneWithRows([0,1,2,3,4,5])}
+    renderRow={(d) => renderRow(d)}
+    refreshControl
+    renderFooter={() => <FooterLoading text={'加载中...'}/>}
+  />
+ </div>
+</Playground>
+
+

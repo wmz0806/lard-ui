@@ -1,0 +1,144 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}calendar-main {
+  width: 100%;
+  padding: 0 30 * @unit;
+  text-align: center;
+  overflow: hidden;
+
+  .@{prefix}calendar-container {
+    width: 100%;
+    overflow: hidden;
+
+    .@{prefix}calendar-header {
+      width: 100%;
+
+      .@{prefix}calendar-header-year,
+      .@{prefix}calendar-header-month {
+        width: 100%;
+        height: 110 * @unit;
+        line-height: 110 * @unit;
+      }
+
+      .@{prefix}calendar-header-year {
+        display: inline-block;
+        height: 110 * @unit;
+        padding-left: 10 * @unit;
+        font-size: 24 * @unit;
+        color: #666;
+        text-align: left;
+      }
+
+      .@{prefix}calendar-header-year:after {
+        content: '';
+        display: inline-block;
+        width: 4 * @unit;
+        height: 10 * @unit;
+        margin-left: 5 * @unit;
+        border: 5 * @unit solid transparent;
+        border-top-color: #666;
+      }
+
+      .@{prefix}calendar-header-month {
+        position: relative;
+        line-height: 80 * @unit;
+        font-size: 36 * @unit;
+        color: #3B4FA0;
+
+        .@{prefix}c-h-m-left,
+        .@{prefix}c-h-m-right {
+          position: absolute;
+          top: 0;
+          height: 100%;
+          width: 80 * @unit;
+        }
+
+        .@{prefix}c-h-m-left {
+          left: 0;
+        }
+
+        .@{prefix}c-h-m-right {
+          right: 0;
+        }
+
+
+      }
+
+    }
+
+    .@{prefix}calendar-days {
+      width: 100%;
+      li {
+        display: inline-block;
+        width: 14.2%; // 100 / 7
+        height: 50 * @unit;
+      }
+    }
+
+    .@{prefix}calendar-month-content {
+      width: 300%;
+      ul {
+        display: inline-block;
+        width: 33.333333%;
+        li {
+          display: inline-block;
+          position: relative;
+          width: 14.2%; // 100 / 7
+          height: 72 * @unit;
+          padding: 6 * @unit 0;
+
+          span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 60 * @unit;
+            height: 60 * @unit;
+            line-height: 60 * @unit;
+            border-radius: 100%;
+          }
+        }
+
+        li:before {
+          content: '';
+          display: inline-block;
+          padding-bottom: 60%;
+        }
+
+        .calendar-days {
+
+        }
+
+        .calendar-prev {
+          color: #999;
+        }
+
+        .calendar-current {
+
+        }
+
+        .calendar-next {
+          color: #999;
+        }
+
+        .calendar-today {
+          span {
+            color: white;
+            background-color: rgb(193, 201, 245);
+          }
+        }
+
+        .calendar-choose {
+          span {
+            color: white;
+            background-color: rgb(44, 57, 144);
+          }
+        }
+      }
+    }
+  }
+}

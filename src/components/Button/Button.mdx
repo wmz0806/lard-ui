@@ -1,0 +1,103 @@
+---
+name: Button
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Button from './index'
+
+
+# Button
+
+按钮组件
+
+### 何时使用
+标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。
+
+
+## 属性
+
+<PropsTable of={Button} />
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  <Button>默认按钮</Button> 
+  <br/><br/>  
+  <Button className={'lui-button-yellow'}>黄色按钮</Button>
+  <br/><br/> 
+  <Button className={'lui-button-orange'}>橘色按钮</Button>
+</Playground>
+
+
+
+### 一些其他的样式展示
+<Playground>
+  <Button disabled>禁用状态</Button>
+  <br/><br/>
+  <Button className={'lui-button-clear'}>clear状态</Button>
+  <br/><br/>
+  <Button className={'lui-button-clear lui-button-no-border'}>没有border状态</Button>
+  <br/><br/>
+  <Button className={'lui-button-small'}>小按钮</Button>
+  <br/><br/>
+  <Button className={'lui-button-br50'}>50%的圆角</Button>
+</Playground>
+
+### 高级用法
+<Playground>
+<Button ref={btn => (this.btn = btn)} loading="加载中..." 
+    onClick={ () => {
+      setTimeout(() => {
+        this.btn.enabled();
+      }, 1500);
+    }}>点击出现加载</Button>
+    <br/><br/>
+    <Button 
+        onClick={() => {
+          return new Promise((resolve, reject) => {
+             setTimeout(() => {
+                resolve();
+             }, 1500);
+          });
+        }}>autoDisabled & Promise 的演示</Button>
+       <br/><br/>
+       <Button 
+            loading="加载中..." 
+            onClick={() => {
+              return new Promise((resolve, reject) => {
+                 setTimeout(() => {
+                    resolve();
+                 }, 1500);
+              });
+          }}>autoDisabled & Promise & loading 的演示</Button>
+</Playground>
+
+
+Tips： 边框的实现是用伪类样式 :before 来实现， 请需要对边框操作时候注意一下（比如圆角）
+<br/>
+如果需要拓展
+
+<pre>
+<code dangerouslySetInnerHTML={{__html: `
+  .lui-button.button-name {
+      background-color: #3B4EA0; //颜色1
+      color: #fff; //颜色2
+      border-color: #3B4EA0; //颜色1
+      &.lui-button-clear {
+        color: #3B4EA0; //颜色1
+        &:hover {
+          color: #3B4EA0; //颜色1
+        }
+      }
+      &:hover {
+        color: #fff; //颜色2
+      }
+    }
+`}}/>
+</pre>
+
+请参照上面的样式
+

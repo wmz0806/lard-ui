@@ -1,0 +1,40 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}tab-bar-container {
+  width: 100%;
+  height: 98 * @unit;
+  background-color: white;
+  text-align: center;
+
+  .@{prefix}tab-bar-item {
+    height: 100%;
+    float: left;
+
+    .@{prefix}tab-bar-item-above {
+      width: 100%;
+      height: 68 * @unit;
+      padding: 11 * @unit 0 7 * @unit 0;
+
+      img {
+        width: 50 * @unit;
+        height: 50 * @unit;
+        margin: auto;
+      }
+    }
+
+    .@{prefix}tab-bar-item-lower {
+      height: 30 * @unit;
+      font-size: 22 * @unit;
+    }
+
+    &.@{prefix}tab-bar-big {
+      img {
+        width: 75 * @unit;
+        height: 75 * @unit;
+        margin: 11 * @unit auto 0 auto;
+      }
+    }
+  }
+}

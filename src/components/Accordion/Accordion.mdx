@@ -1,0 +1,39 @@
+---
+name: Accordion
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Accordion from './index'
+import List from './list.props.tsx'
+
+# Switch
+
+开关  组件
+
+## Properties
+#### List interface
+<PropsTable of={List} />
+
+#### 组件 props
+<PropsTable of={Accordion} />
+ 
+## 函数
+
+  1.  **setActiveItem**(index: number)
+  >     将第 index 个条目 切换状态
+
+## Basic usage
+
+<Playground>
+ <div>
+ 
+  <Accordion 
+    list={[
+      {title: '试试看', content: '内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容, 内容.........内容'},
+      {title: '试试看', content: '内容.........内...内容, 内 内容.........内容', onClick: (e, active) => console.log(active)},
+    ]}
+    onClick={(e, index, item) => console.log(index, item)}
+  />
+ </div>
+</Playground>

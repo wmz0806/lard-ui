@@ -1,0 +1,60 @@
+---
+name: NavBar
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import NavBar from './index'
+
+import Config from './interface/Config.props';
+import Props from './interface/Props.props';
+
+# NavBar
+
+导航栏  组件
+
+## Properties
+
+#### list item 参数
+<PropsTable of={Config} />
+
+#### 组件 props
+<PropsTable of={Props} />
+ 
+## 函数
+
+  1.  **setActiveItem**(index: number, isAutoScroll: boolean)
+  >     将某一个item强制设定为active, 第二个参数为如果可以滚动的导航, 点击的时候让他全部显示出来
+
+## Basic usage
+
+<Playground>
+  <NavBar 
+    list={[
+      {content: '123'},
+      {content: '23'},
+      {content: '54345'},
+      {content: '3213'},
+    ]}
+    activeColor={'red'}
+  />
+   <NavBar 
+      list={[
+        {content: '123'},
+        {content: '23'},
+        {content: '54345'},
+        {content: '3213'},
+        {content: '3213'},
+        {content: '3213'},
+        {content: '3213'},
+        {content: '3213'},
+        {content: '自动滚过来', active: true},
+        {content: '3213'},
+        {content: '3213'},
+      ]}
+      noNeedAutoActive={true}
+      isSlide={true}
+      isAutoSlide={true}
+    />
+  
+</Playground>

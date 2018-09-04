@@ -1,0 +1,57 @@
+---
+name: LImg
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import LImgClass from './LImg'
+import LImg from './index'
+import Loading from '../Loading/index';
+
+
+# LImg
+
+LImg , LUI Image，Lazy Image
+
+### 何时使用
+LImg
+
+
+## 属性
+
+<PropsTable of={LImgClass} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  {
+    LImg.get({ 
+    width: 0.88,
+     src: 'https://www.baidu.com/img/bd_logo1.png',
+      lazy: true,
+       imgShade: false,
+       clickReload: false,
+       defLoading: (<Loading size={0.44}/>)
+       }, [])
+    }
+</Playground>
+
+<Playground>
+  {
+    LImg.get({ 
+    width: 0.88,
+     src: null,
+      lazy: true
+       })
+    }
+</Playground>
+
+
+
+

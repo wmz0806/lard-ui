@@ -1,0 +1,149 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+/* 外层容器部分 */
+.@{prefix}drawer-menu-wrapper {
+  position: absolute;
+  z-index: 100;
+
+  /* 整个组件 */
+  .@{prefix}drawer-menu-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .2);
+    transition: all linear .2s;
+
+    &.@{prefix}drawer-menu-opacity-show {
+      opacity: 1;
+    }
+
+    &.@{prefix}drawer-menu-opacity-hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* 左侧整个菜单 */
+    .@{prefix}drawer-menu-main {
+      position: relative;
+      height: 100%;
+      width: 600 * @unit;
+      transition: all linear .2s;
+
+      &.@{prefix}drawer-menu-slide-show {
+        transform: translate3d(0, 0, 0);
+      }
+
+      &.@{prefix}drawer-menu-slide-hide {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      .@{prefix}drawer-menu-header {
+        position: relative;
+        height: 340 * @unit;
+        width: 100%;
+        background-color: #3B4FA0;
+
+        /* 渐变色块 渐变不了这种曲线 mlgb */
+        .@{prefix}drawer-menu-header-gradient {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          height: 216 * @unit;
+          width: 571 * @unit;
+          background: linear-gradient(135deg, #3B4FA0, #4458B2);
+
+          .@{prefix}drawer-menu-avatar {
+            height: 146 * @unit;
+            width: 146 * @unit;
+            padding-top: 28 * @unit;
+            margin-left: 20 * @unit;
+            margin-top: 10 * @unit;
+
+            text-align: center;
+
+            background-color: white;
+            background-size: cover;
+            border-radius: 100%;
+
+            overflow: hidden;
+          }
+
+          .@{prefix}drawer-menu-header-details {
+            position: absolute;
+            top: 0;
+            left: 166 * @unit;
+            right: 0;
+            height: 100%;
+          }
+        }
+      }
+
+      .@{prefix}drawer-menu-body {
+        position: absolute;
+        top: 340 * @unit;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .@{prefix}drawer-menu-list {
+          width: 100%;
+          padding: 30 * @unit 0 20 * @unit 0;
+          border-bottom: 1px solid;
+
+          .@{prefix}drawer-menu-item {
+            height: 106 * @unit;
+            width: 100%;
+            line-height: 106 * @unit;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            .@{prefix}drawer-menu-item-icon {
+              display: inline-block;
+              width: 150 * @unit;
+              height: 100%;
+              padding-left: 65 * @unit;
+            }
+
+            .@{prefix}drawer-menu-item-content {
+              display: inline-block;
+              vertical-align: middle;
+              font-size: 32 * @unit;
+            }
+          }
+        }
+
+        &.@{prefix}drawer-menu-body-white {
+
+          .@{prefix}drawer-menu-item {
+            color: #333333;
+          }
+
+          .@{prefix}drawer-menu-item-active {
+            background-color: #F8F8F8;
+          }
+        }
+
+        &.@{prefix}drawer-menu-body-blue {
+
+          background-color: #2F4499;
+
+          .@{prefix}drawer-menu-item {
+            color: white;
+          }
+
+          .@{prefix}drawer-menu-item-active {
+            background-color: #334489;
+          }
+        }
+      }
+    }
+  }
+}
+

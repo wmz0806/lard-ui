@@ -1,0 +1,159 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+@item-height: 78;
+@item-height-unit: 78 * @unit;
+
+.@{prefix}picker-main {
+
+  .@{prefix}picker-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 101;
+    background-color: rgba(0, 0, 0, .4);
+    transition: all .3s;
+
+    &.hide {
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+
+  .@{prefix}picker-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -100%;
+    z-index: 1000;
+    background-color: #fff;
+    transition: all .3s;
+
+    &.show {
+      bottom: 0;
+    }
+
+    .@{prefix}picker-header {
+      display: flex;
+
+      .@{prefix}picker-item {
+        padding: 30 * @unit;
+        font-size: 32 * @unit;
+        line-height: 1.15;
+        color: #666;
+        text-align: center;
+
+        &.@{prefix}header-title {
+          flex: 1;
+        }
+
+        &.@{prefix}header-left {
+          cursor: pointer;
+          color: #999;
+        }
+        &.@{prefix}header-right {
+          cursor: pointer;
+          color: #3B4FA0;
+        }
+      }
+    }
+  }
+}
+
+.@{prefix}view {
+  display: flex;
+  align-items: center;
+  position: relative;
+  &-shade-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 156 * @unit;
+    background: transparent;
+    z-index: 11;
+    pointer-events: none;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  &-shade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 156 * @unit;
+    background: transparent;
+    z-index: 11;
+    pointer-events: none;
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top, rgba(255,255,255,1) 10%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}
+
+.@{prefix}col-content {
+  flex: 1;
+
+  .@{prefix}list {
+    //perspective:3000px;
+    //backface-visibility: hidden;
+    //-webkit-backface-visibility: hidden;
+    position: relative;
+    height: @item-height * 7 * @unit;
+    overflow: hidden;
+
+    .@{prefix}window {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+    }
+
+    .@{prefix}indicator {
+      box-sizing: border-box;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: @item-height-unit;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      transform: translate3d(0, -50%, 0);
+      z-index: 3;
+    }
+
+    .@{prefix}content {
+      //transform-style:preserve-3d;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      padding: (@item-height * 6) / 2 * @unit 0;
+      transform: translate3d(0, 0, 0);
+      z-index: 1;
+
+      .@{prefix}col {
+        height: @item-height-unit;
+        line-height: @item-height-unit;
+        font-size: 36 * @unit;
+        padding: 0 10 * @unit;
+        color: #999999;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &.selected {
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+

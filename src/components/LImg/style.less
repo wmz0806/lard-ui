@@ -1,0 +1,33 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}img-box {
+  overflow: hidden;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  position: relative;
+  .@{prefix}img-loading{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+.@{prefix}img-liner {
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  .@{prefix}img-shade {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    opacity: 0;
+  }
+}
+

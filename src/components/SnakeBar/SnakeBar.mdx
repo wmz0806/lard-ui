@@ -1,0 +1,68 @@
+---
+name: SnakeBar
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import SnakeBar from './index'
+
+import Props from './interface/config'
+
+# SnakeBar
+
+开关  组件
+
+## Properties
+#### 调用show 方法时候的参数 Config
+
+<PropsTable of={Props} />
+ 
+## 函数
+
+  1.  **show**(props: Config): () => {}
+  >     打开一个框框. 返回他的关闭函数
+  
+  2.  **hide**()
+  >     关闭最前方的框框
+  
+  3.  **clear**()
+  >     清空所有框框
+  
+  4.  **destroy**()
+  >     销毁该组件和节点
+  
+## Basic usage
+
+<Playground>
+ <div 
+  onClick={() => SnakeBar.show({
+    content: '号外号外, 号外号外,  薛之谦又yp去了!!!!!!!!'
+  })}
+ >
+   打开一个
+ </div>
+ 
+  <div 
+   onClick={() => SnakeBar.show({
+     content: '买空调送🍌了!',
+     onClick: () => console.log('大🍌!')
+   })}
+  >
+    打开第二个
+  </div>
+  
+  <div 
+     onClick={() => SnakeBar.show({
+       content: '买空调又不送🍌了!',
+       autoClose: 1000
+     })}
+    >
+      打开第三个
+    </div>
+    
+   <div onClick={() => SnakeBar.hide()}>关闭最前面的那个</div>
+   
+   <div onClick={() => SnakeBar.clear()}>清空框框</div>
+   
+   <div  onClick={() => SnakeBar.destroy()}>销毁</div>
+</Playground>

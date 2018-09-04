@@ -1,0 +1,85 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}agg-container {
+  position: absolute;
+  bottom: 30 * @unit;
+  right: 30 * @unit;
+  left: 30 * @unit;
+  z-index: 100;
+  height: 78 * @unit;
+  pointer-events: none;
+
+  .@{prefix}agg-box {
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 78 * @unit;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 0;
+    overflow: hidden;
+
+    transition: width 233ms, border-radius 466ms;
+
+
+    > button, .@{prefix}agg-menus > button {
+      display: inline-block;
+      height: 78 * @unit;
+      width: 78 * @unit;
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 44 * @unit;
+    }
+
+    .@{prefix}agg-play{
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      transition: transform 233ms;
+    }
+
+    .@{prefix}agg-menus {
+      font-size: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 233ms;
+      .@{prefix}agg-button{
+        width: 100 * @unit;
+      }
+
+    }
+
+  }
+
+  &.active {
+
+    .@{prefix}agg-box{
+      width: 100%;
+      border-radius: 10 * @unit;
+
+      transition: width 233ms, border-radius 133ms;
+
+      .@{prefix}agg-menus{
+        opacity: 1;
+      }
+
+      .@{prefix}agg-play {
+        transform: rotate(45deg);
+      }
+
+    }
+  }
+
+}

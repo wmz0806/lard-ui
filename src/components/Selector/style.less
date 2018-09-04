@@ -1,0 +1,111 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+// selector start
+.@{prefix}selector-main {
+  width: 100%;
+
+  .@{prefix}selector-container {
+    width: 100%;
+
+    .@{prefix}s-c-item {
+      position: relative;
+
+      .@{prefix}s-c-icon {
+        position: absolute;
+        top: 0;
+        width: 88 * @unit;
+        height: 100%;
+
+        .@{prefix}s-c-icon-inner {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          width: 40 * @unit;
+          height: 40 * @unit;
+          margin: auto;
+        }
+      }
+
+      .@{prefix}s-c-context {
+        width: 100%;
+        padding-left: 88 * @unit;
+      }
+    }
+
+    .@{prefix}s-c-all-select {
+      height: 88 * @unit;
+      .@{prefix}s-c-context {
+        line-height: 88 * @unit;
+      }
+    }
+  }
+}
+
+// selector end
+
+/* 下面是分布在各处的 selctor 的样式 */
+.@{prefix}single-main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .@{prefix}single-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 40 * @unit;
+    height: 40 * @unit;
+    margin: auto;
+  }
+}
+
+.@{prefix}selector-box {
+  display: inline-block;
+  font-size: 0;
+  position: relative;
+
+  &.active{
+    .@{prefix}icon:first-child{
+      opacity: 1;
+      transform: scale(1);
+    }
+    .@{prefix}icon:last-child{
+      opacity: 0;
+    }
+  }
+
+
+  .@{prefix}icon {
+    font-size: 40 * @unit;
+    color: #999999;
+    opacity: 1;
+
+    transition: all 150ms ease-out;
+
+    &:first-child{
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    &.choose {
+      color: #3B4FA0;
+    }
+
+    &.disabled {
+      color: #DDDDDD;
+    }
+
+    &.error {
+      color: #E4393C;
+    }
+  }
+}

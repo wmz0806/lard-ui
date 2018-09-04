@@ -1,0 +1,125 @@
+---
+name: ButtonGroup
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import ButtonGroup from './index'
+import Btn from '../Button'
+
+import Props from './interface/props'
+import Config from './interface/config'
+
+# ButtonGroup
+
+按钮组
+
+## Properties 
+
+
+<PropsTable of={Props} />
+
+<PropsTable of={Config} />
+
+
+      
+#### ref函数
+  1.  **setChoose**(config: boolean[] | number)
+  >     设置选中状态 (可以传入index 或者 整个状态数组)
+  
+  2.  **getChoose**(): boolean[]
+  >     获取选中状态
+  
+  3.  **selectAll**()
+  >     多选时, 选中所有
+
+  4.  **unselectAll**()
+  >     全都不选
+  
+  5.  **getAllSelectStatus**(): boolean
+  >     获取全选状态
+
+## Basic usage
+#### 单选 Buttons
+<Playground>
+  <div>4队列</div>
+  <Btn onClick={() => console.log(window._buttonGroup.getChoose())}>获取状态</Btn>
+  <Btn onClick={() => window._buttonGroup.setChoose(2)}>设定状态</Btn>
+  <div>
+    <ButtonGroup
+      ref={r => window._buttonGroup = r}
+      data={[
+        {content: '1111'},
+        {content: '2222', isChoose: true},
+        {content: '3333'},
+        {content: '4444', isDisabled: true},
+        {content: '5555'},
+      ]}
+      col={4}
+      type={'single'}
+      onClick={(e, index, select, item) => console.log(index, select, item)}
+    />
+  </div>
+  
+  <div>自然队列</div>
+  <div>
+    <ButtonGroup
+      data={[
+        {content: '自然队列1111'},
+        {content: '自然队列2222', isChoose: true},
+        {content: '自然队列3333'},
+        {content: '自然队列4444', isDisabled: true},
+        {content: '自然队列5555'},
+      ]}
+      type={'single'}
+      onClick={(e, index, select, item) => console.log(index, select, item)}
+    />
+  </div>
+</Playground>
+
+#### 多选 Buttons
+
+<Playground>
+  <div>4队列</div>
+  <Btn onClick={() => console.log(window._buttonGroup1.getChoose())}>获取状态</Btn>
+  <Btn onClick={() => window._buttonGroup1.setChoose(2)}>设定状态</Btn>
+  <Btn onClick={() => window._buttonGroup1.selectAll()}>全选</Btn>
+  <Btn onClick={() => window._buttonGroup1.unselectAll()}>全不选</Btn>
+  <Btn onClick={() => console.log(window._buttonGroup1.getAllSelectStatus())}>获取全选状态(true|false)</Btn>
+  <div>
+    <ButtonGroup
+      ref={r => window._buttonGroup1 = r}
+      data={[
+        {content: '1111'},
+        {content: '2222', isChoose: true},
+        {content: '3333'},
+        {content: '4444', isDisabled: true},
+        {content: '5555'},
+      ]}
+      col={4}
+      type={'multiple'}
+      allSelect={false}
+      onClick={(e, index, select, item) => console.log(index, select, item)}
+    />
+  </div>
+  
+  <div>自然队列</div>
+  <div>
+    <ButtonGroup
+      data={[
+        {content: '自然队列1111', isChoose: true},
+        {content: '自然队列2222', isChoose: true},
+        {content: '自然队列3333', isChoose: true},
+        {content: '自然队列4444', isDisabled: true},
+        {content: '自然队列5555', isChoose: true},
+      ]}
+      type={'multiple'}
+      onClick={(e, index, select, item) => console.log(index, select, item)}
+    />
+  </div>
+</Playground>
+
+
+        
+
+

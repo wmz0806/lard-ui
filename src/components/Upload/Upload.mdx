@@ -1,0 +1,67 @@
+---
+name: Upload
+menu: Components
+---
+
+import Component from "react-component-component";
+import { Playground, PropsTable } from 'docz';
+import Queue from './Queue';
+import Upload from './Upload';
+
+# Upload
+
+上传组件
+
+### 何时使用
+无
+
+## Upload 属性
+<PropsTable of={Upload} />
+
+
+## Queue 属性
+<PropsTable of={Queue} />
+
+## 代码演示
+
+### 一般演示
+<Playground>
+
+ <Upload 
+  onComplete={(result) => {
+    console.log(result);
+  }}
+ />
+  
+</Playground>
+
+### 队列演示
+
+<Playground>
+ <Component initialState={{ images: [] }}>
+    {component => {
+      return (
+        <Queue 
+              max={3}
+              images={component.state.images}
+              delCallback={(index, item) => {
+                  component.state.images.splice(index, 1);
+                  component.setState({});
+              }}
+              uploadProps={{
+                onComplete: (result, loadingCloseFun) => {
+                 component.state.images.push(result.base64);
+                 component.setState({});
+                 loadingCloseFun();  //关闭loading
+                }
+              }}
+             />
+      );
+    }}
+  </Component>
+  
+</Playground>
+
+
+
+

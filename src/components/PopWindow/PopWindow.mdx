@@ -1,0 +1,152 @@
+---
+name: PopWindow
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import PopWindow from './index'
+import ActionSheet from '../ActionSheet'
+
+# PopWindow
+
+弹出窗
+
+## Properties 
+  <PropsTable of={PopWindow} />
+ 
+#### 静态函数
+
+  1.  **show**(options, wrapperCSS): 打开的popWindow实例, 可以继续调用实例的show 和 hide方法
+  >     打开弹出窗 (每次调用该方法, 都会生成一个新的组件实例. 需要再次打开它, 可以调用 ref.show()方法)
+      options: {
+        type: 'left' | 'right' | 'top' | 'bottom', // 弹出方向
+        children: string | ReactNode, // 内容
+        content: 同children, // 内容 (二选一即可)
+        animateTime: number, // 动画时间
+        animateClass: '', // 自定义动画
+        backColor: 'white', // 背景色
+        onHide: () => void 0, // 回调函数
+      }
+      wrapperCSS:string:  外层包裹容器额外的css
+      
+#### ref函数
+  1.  **show**(options, wrapperCSS: 同上)
+  >     重新打开该popWindow
+  
+  2.  **hide**()
+  >     关闭该popWindow
+  
+  3.  **destroy**()
+  >     销毁该popWindow
+
+## Basic usage
+
+<Playground>
+  <PopWindow isHidden={true} ref={r => window.popWindow = r}>
+    我是镶嵌的内容
+    <div onClick={() => window.popWindow.hide()}>点击关闭我</div>
+  </PopWindow>
+  
+  <button onClick={() => window.popWindow.show()}>点击打开使用 jsx 嵌入的popWindow</button>
+ 
+  <br />
+  <br />
+  <p> **下面是使用方法调用** </p>
+  <br />
+  <br />
+  
+  <div 
+      onClick={() => {
+        window._bottomPopWindow = PopWindow.show({
+          content:  <div>
+                      我是下面的儿
+                      <h1 
+                        onClick={() => window._innerPopWindow = PopWindow.show({content: <div 
+                          onClick={() => window._innerPopWindow.hide()}
+                      >点击关闭</div>})}>
+                        在里面再开一个左面的弹窗
+                      </h1>
+                      <h1 onClick={() => ActionSheet.show({
+                                                   list: [
+                                                     {content: '123'},
+                                                     {content: '2345', disabled: true},
+                                                     {content: '543'},
+                                                     {content: '点我也可以关闭', isDelete: true},
+                                                     {content: '54376'},
+                                                     {content: '54345'},
+                                                     {content: '呵呵', isCancel: true},
+                                                   ],
+                                                   onHide: () => console.log('hide')
+                                                 })}>点击打开 action sheet</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <h1>很长</h1>
+                      <div onClick={() => window._bottomPopWindow.hide()}>
+                        关闭窗口
+                      </div>
+                    </div>,
+          type: 'bottom',
+        })
+      }}
+    >点击新开一个下面弹框</div>
+    <div onClick={() => window._bottomPopWindow.show()}>再次打开下面的弹框</div>
+    <div onClick={() => window._bottomPopWindow.destroy()}>销毁下面的弹框</div>
+     
+    <div 
+      onClick={() => {
+        window._leftPopWindow = PopWindow.show({
+          content:  <div>
+                      我是左面的儿
+                      <div onClick={() => window._leftPopWindow.hide()}>
+                        关闭窗口
+                      </div>
+                    </div>
+        })
+      }}
+    >点击新开一个左侧弹框</div>
+    <div onClick={() => window._leftPopWindow.show()}>再次打开左侧的弹框</div>
+     
+    <div 
+      onClick={() => {
+        window._rightPopWindow = PopWindow.show({
+          content:  <div>
+                      我是右面的儿
+                      <div onClick={() => PopWindow.hide()}>
+                        关闭窗口
+                      </div>
+                    </div>,
+          type: 'right'
+        })
+      }}
+    >点击新开一个右侧弹框</div>
+    <div onClick={() => window._rightPopWindow.show()}>再次打开右侧的弹框</div>
+     
+    <div 
+      onClick={() => {
+          window._topPopWindow = PopWindow.show({
+          content:  <div>
+                      我是上面的儿
+                      <div onClick={() => window._topPopWindow.hide()}>
+                        关闭窗口
+                      </div>
+                    </div>,
+          type: 'top'
+        })
+      }}
+    >点击新开一个上面弹框</div>
+    <div onClick={() => window._topPopWindow.show()}>再次打开上方的弹框</div>
+</Playground>
+

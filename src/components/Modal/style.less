@@ -1,0 +1,162 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}modal-main {
+  .@{prefix}modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+
+    .@{prefix}modal-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .@{prefix}modal-shade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, .2);
+    }
+
+    .@{prefix}modal-box {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 100%;
+      margin: auto;
+      height: 100%;
+      overflow: auto;
+      overflow-x: hidden;
+    }
+
+    .@{prefix}modal-content {
+      position: absolute;
+      width: 500 * @unit;
+      top: 20%;
+      left: 125 * @unit;
+      margin-bottom: 30 * @unit;
+      border-radius: 10 * @unit;
+      background-color: #fff;
+
+      .@{prefix}modal-header {
+        height: 90 * @unit;
+        margin: 0;
+        line-height: 90 * @unit;
+        font-size: 30 * @unit;
+        background-color: white;
+        border-radius: 10 * @unit 10 * @unit 0 0;
+      }
+
+      .@{prefix}modal-body {
+        padding: 0 42 * @unit 47 * @unit;
+        overflow: auto;
+        font-size: 26 * @unit;
+        background-color: white;
+      }
+
+      .@{prefix}modal-footer {
+        display: flex;
+        width: 100%;
+        height: 90 * @unit;
+        line-height: 90 * @unit;
+        font-size: 30 * @unit;
+        border-top: 2 * @unit @border-color solid;
+        background-color: white;
+        border-bottom-left-radius: 10 * @unit;
+        border-bottom-right-radius: 10 * @unit;
+        overflow: hidden;
+        .@{prefix}modal-footer-btn {
+          flex-grow: 1;
+          border-right: 2 * @unit @border-color solid;
+        }
+
+        .@{prefix}modal-footer-btn:last-child {
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  /* 这是总体的动画 */
+  .@{prefix}modal-animate-enter {
+    opacity: 0;
+  }
+
+  .@{prefix}modal-animate-enter-active {
+    opacity: 1;
+    transition: all 150ms ease-out;
+  }
+
+  .@{prefix}modal-animate-exit {
+    opacity: 1;
+  }
+
+  .@{prefix}modal-animate-exit,
+  .@{prefix}modal-animate-exit-active {
+    opacity: .01;
+    transition: all 150ms ease-out;
+  }
+
+  /* 这是如果有第二次弹框, 二次弹框的动画, 不可更改 */
+  .@{prefix}modal-inner-animate-enter {
+    .@{prefix}modal-shade{
+      opacity: 0;
+    }
+    .@{prefix}modal-content{
+      opacity: 0;
+      transform: scale(1.128) translate3d(0, 0, 0);
+    }
+  }
+
+  .@{prefix}modal-inner-animate-enter-active {
+    .@{prefix}modal-shade{
+      opacity: 1;
+      transition: opacity 233ms;
+    }
+    .@{prefix}modal-content{
+      opacity: 1;
+      transform: scale(1) translate3d(0, 0, 0);
+      transition: transform 233ms, opacity 150ms;
+    }
+  }
+
+  .@{prefix}modal-inner-animate-exit {
+    .@{prefix}modal-shade{
+      opacity: 1;
+      transition: opacity 250ms;
+    }
+    .@{prefix}modal-content{
+      opacity: 1;
+      transform: scale(1) translate3d(0, 0, 0);
+      transition: transform 250ms, opacity 250ms;
+    }
+  }
+
+  //.@{prefix}modal-inner-animate-exit,
+  .@{prefix}modal-inner-animate-exit-active {
+    .@{prefix}modal-shade{
+      opacity: 0;
+      //transition: opacity 250ms;
+    }
+    .@{prefix}modal-content{
+      opacity: 0;
+      transform: scale(0.872) translate3d(0, 0, 0);
+      //transition: transform 250ms, opacity 250ms;
+    }
+  }
+}
+
+
+

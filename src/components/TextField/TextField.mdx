@@ -1,0 +1,121 @@
+---
+name: TextField
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import {Input, TextArea} from './index'
+import Props from './interface/props.tsx'
+
+
+# TextField
+输入组(input 格式下, 下方的错误提示为0.44rem的高度, 使用的position: absolute布局)
+
+## Properties
+  <PropsTable of={Props} />
+
+#### headerConfig
+
+#### ref返回实例中调用的函数
+
+  1.  **getRef**()
+  >     获取组件的输入节点 (input, textarea)
+  2.  **validate**(isShowErr: boolean = true)
+  >     对组件发起验证(需要传入了validate规则), 参数为是否显示错误提示
+  3.  **getValue**()
+  >     获取组件的当前值
+  4.  **setValue**(v: string)
+  >     设定组件的当前值
+  5.  **setDisabled**(isDisabled: boolean)
+  >     设置组件当前是否禁用|启用
+
+## Basic usage
+
+## input
+
+<Playground>
+ <div>
+  <Input
+    ref={r => window._inputRef = r}
+    placeholder={'输入 "xi" 开头的字符串以通过验证'}
+    initValue={''}
+    needClearIcon={true}
+    needEncrypt={false}
+    validateReg={/^xi/}
+    isBlurValidate={true}
+    validateType={'shake'}
+    validateMsg={'输入 xi'}
+    validateColor={'red'}
+    type={'text'}
+    maxLength={10}
+    onClick={(e, v) => console.log('click')}
+    onBlur={(e, v) => console.log('onBlur')}
+    onFocus={(e, v) => console.log('onFocus')}
+    onChange={(e, v) => console.log('onChange')}
+    className={'custom'}
+    //isDisabled={false}
+  />
+ </div>
+ 
+ <div style={{height: '1rem'}}/>
+ 
+ <div
+   onClick={() => console.log(window._inputRef.validate())}
+ >点我发起验证</div>
+ <div
+    onClick={() => console.log(window._inputRef.getRef())}
+  >点我获取Input节点</div>
+   <div
+      onClick={() => console.log(window._inputRef.getValue())}
+    >点我获取值</div>
+    <div
+      onClick={() => window._inputRef.setDisabled(window.__disabled = !window.__disabled)}
+    >点我切换禁用, 启用</div>
+</Playground>
+
+## TextArea
+
+<Playground>
+  <div>
+    <TextArea
+      ref={r => window._textArea = r}
+      height={'5rem'}
+      placeholder={'输入 "xi" 开头的字符串以通过验证, 最大长度为20'}
+      initValue={'123123'}
+      isBlurValidate={true}
+      validateReg={/^xi/}
+      //overLengthMsg={''}
+      validateMsg={'输入 "xi" 开头的字符串以通过验证, 最大长度为20'}
+      maxLength={20}
+      onClick={(e, v) => console.log('click')}
+      onBlur={(e, v) => console.log('onBlur')}
+      onFocus={(e, v) => console.log('onFocus')}
+      onChange={(e, v) => console.log('onChange')}
+      className={'custom'}
+      //isDisabled={false}
+    />
+  </div>
+  
+   <div
+     onClick={() => console.log(window._textArea.validate())}
+   >点我发起验证</div>
+   <div
+      onClick={() => console.log(window._textArea.getRef())}
+    >点我获取textArea节点</div>
+   <div
+      onClick={() => console.log(window._textArea.getValue())}
+    >点我获取值</div>
+    <div
+          onClick={() => console.log(window._textArea.setValue('点我设置值'))}
+        >点我设置值</div>
+    <div
+      onClick={() => window._textArea.setDisabled(window.__disabled = !window.__disabled)}
+    >点我切换禁用, 启用</div>
+  
+
+</Playground>
+
+
+
+  
+

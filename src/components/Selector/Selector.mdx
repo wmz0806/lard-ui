@@ -1,0 +1,236 @@
+---
+name: Selector
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import Selector, {RadioItem, CheckboxItem} from './index'
+import Props from './interface/props'
+import Btn from '../Button';
+import RCC from 'react-component-component'
+
+# Selector
+
+选择器
+
+## Properties 
+
+<PropsTable of={Props} />
+      
+#### ref函数
+
+  1.  **getChoose**(): boolean[]
+  >     返回当前组件的选中状态
+  
+  2.  **setChoose**(config: boolean[] | number): void
+  >     传入数字, 设定只选中某一个, 或者传入数组, 设定整个组件的选中状态
+  
+  3.  **selectAll**(): void
+  >     多选选择器时, 全选 (忽略disabled 和 err 的选择状态)
+  
+  4.  **unselectAll**(): void
+  >     全不选 (忽略disabled 和 err 的选择状态)
+  
+  5.  **getAllSelectStatus**() : 0 | 1 | 2
+  >     多选选择器时, 获取全选状态. 0: 全都没选中; 1: 部分选中; 2: 全都选中了 (忽略disabled 和 err 的选择状态)
+  
+## Basic usage
+
+<Playground>
+  <div>单选选择器竖向排列</div>
+ 
+  <div>
+    <Selector
+      type={'radio'}
+      data={[
+        {},
+        {
+          render: (index, item) => (<div style={{height: '1rem', lineHeight: '1rem'}}>{index}</div>),
+          isDisabled: true,
+        },
+        {},
+        {},
+        {},
+      ]}
+      onCheck={(e, index, item) => console.log(index, item)}
+      renderItem={(index, item) => (<div style={{height: '0.5rem', lineHeight: '0.5rem'}}>{index}</div>)}
+    />
+  </div>
+  
+  <div>单选选择器横向排列</div>
+  <div>
+    <Selector
+      type={'radio'}
+      direction={'horizontal'}
+      data={[
+        { isChoose: true },
+        { isErr: true },
+        { isDisabled: true, isChoose: true },
+        { },
+        { },
+      ]}
+      onCheck={(e, index, item) => console.log(index, item)}
+      renderItem={(index, item) => (<div style={{height: '0.5rem', lineHeight: '0.5rem'}}>{index}</div>)}
+    />
+  </div>
+  
+  <div>多选选择器</div>
+  <div>
+    <Selector
+      type={'checkbox'}
+      direction={'horizontal'}
+      data={[
+        { isChoose: true },
+        { isErr: true },
+        { isDisabled: true, isChoose: true },
+        { },
+        { },
+      ]}
+      onCheck={(e, index, item, select) => console.log(index, item, select)}
+      renderItem={(index, item) => (<div style={{height: '0.5rem', lineHeight: '0.5rem'}}>{index}</div>)}
+    />
+  </div>
+  
+  <div>竖向排列</div>
+  
+   <div>
+      <Selector
+        type={'checkbox'}
+        hasAllSelect={true}
+        data={[
+          { isChoose: true },
+          { isErr: true },
+          { isDisabled: true, isChoose: true },
+          { },
+          { },
+        ]}
+        onCheck={(e, index, item, select) => console.log(index, item, select)}
+        renderItem={(index, item) => (<div style={{height: '1rem', lineHeight: '1rem'}}>{index}</div>)}
+      />
+    </div>
+</Playground>
+
+## Single Use
+
+#### 单独使用
+
+  1.  某些情况下可能会用到此类组件
+  >     import {RadioItem, CheckboxItem} from './index', 
+      然后 调用 RadioItem() || CheckboxItem() 返回一个对象,
+      使用对象中的组件 class 来生成一组有依赖关系的选择器 , 组件可以随意放置到不同的位置,
+      组件的选中状态由组件内部维护, 只需要对象内返回的方法即可得到组件状态 或者 ref等
+      以下为  RadioItem() || CheckboxItem() 返回的对象key值
+
+  2.  Radio && RadioWrapper
+  >     单选组件 以及他的包裹容器, 每一对需要传入相同的index来进行区分
+ 
+  3.  Checkbox && CheckboxWrapper
+  >     多选组件 以及他的包裹容器, 每一对需要传入相同的index来进行区分
+
+  4.  getRef(): ref[]
+  >     返回当前组件组的所有实例, 为一个ref数组, ref可以调用以下这些方法: 
+      setChoose(true | false)
+      getChoose(): true | false
+      getStatus(): {isErr: boolean, isDisabled: boolean, isChoose: boolean}
+
+  5.  getChoose(): boolean[]
+  >     返回当前组件组的选中状态
+
+  6.  getAllSelectStatus(): 0 | 1 | 2
+  >     如果当前选择器是  checkbox , 返回当前组件组的全选状态. 0: 全没选, 1: 选择一些, 2: 全选
+
+  7.  selectAll(isChoose: boolean)
+  >     如果是多选选择器, 设定组件组的所有选择状态 (不操作 disabled 和 err 的情况)
+
+
+<Playground>
+  <div>传入index控制组件选中状态, 和 children 分离</div>
+ <RCC 
+    initialState={{ R1: null, R2: null }}
+    didMount={({ setState }) => {
+      const C1 = CheckboxItem({onCheck: (e, index, choose, select) => {console.log(index, choose, select, 'check第一个')}});
+      const R1 = RadioItem({onCheck: (e, index, choose) => {console.log(index, choose, 'radio第一个')}});
+      setState({R1,C1});
+    }}
+  >
+    {({state}) => {
+      const {R1, C1} = state;
+      if (!R1) return <div/>;
+      const {Radio: Radio1, RadioWrapper: RW1, getChoose: getChoose1, getRef: getRef1} = R1;
+      const {Checkbox: Checkbox1, CheckboxWrapper: CW1, getChoose: checkChoose1, getRef: checkRef1} = C1;
+        return (
+          <div style={{lineHeight: '1rem'}}>
+            <h2>第一组 checkbox</h2>
+            <Btn onClick={() => console.log(C1.getRef())}>获取所有refs</Btn>
+            <Btn onClick={() => console.log(C1.getChoose())}>获取选中状态</Btn>
+            <Btn onClick={() => console.log(C1.getAllSelectStatus())}>获取全选状态</Btn>
+            <Btn onClick={() => console.log(C1.selectAll(true))}>将他们全选</Btn>
+            <Btn onClick={() => console.log(C1.selectAll(false))}>将他们全不选</Btn>
+            <Btn onClick={() => console.log(C1.getRef()[1].setChoose(true))}>选中第二个</Btn>
+      
+            <CW1 isAllSelect={true}>
+              全选
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Checkbox1 isAllSelect={true}/>
+              </div>
+              全选
+            </CW1>
+            <CW1 index={0}>
+              第一个 : 111
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Checkbox1 isDisabled={true} index={0}/>
+              </div>
+            </CW1>
+            <CW1 index={1}>
+              第一个 : 222
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Checkbox1 isChoose={true} index={1}/>
+              </div>
+            </CW1>
+            <CW1 index={2}>
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Checkbox1 index={2}/>
+              </div>
+              第一个 : 333
+            </CW1>
+            <CW1 index={3}>
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Checkbox1 index={3}/>
+              </div>
+              第一个 : 444
+            </CW1>
+      
+            
+            <h2>第一组 radio</h2>
+            <Btn onClick={() => console.log(getChoose1())}>点击获取 Radio1 的状态</Btn>
+            <Btn onClick={() => console.log(getRef1())}>点击获取 Ref</Btn>
+            <RW1 index={0}>
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Radio1 isDisabled={true} index={0}/>
+              </div>
+              第一个 : 111
+            </RW1>
+            <RW1 index={1}>
+              第一个 : 222
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Radio1 isChoose={true} index={1}/>
+              </div>
+            </RW1>
+            <RW1 index={2}>
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Radio1 index={2}/>
+              </div>
+              第一个 : 333
+            </RW1>
+            <RW1 index={3}>
+              第一个 : 444
+              <div style={{display: 'inline-block', width: '1rem', height: '1rem'}}>
+                <Radio1 index={3}/>
+              </div>
+            </RW1>
+          </div>
+        )
+    }}
+  </RCC>
+</Playground>
+

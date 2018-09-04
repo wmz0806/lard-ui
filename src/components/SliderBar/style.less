@@ -1,0 +1,58 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}slider-bar-main {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  .@{prefix}slider-bar-container {
+    position: relative;
+    height: 100%;
+    z-index: 2;
+    transform: translate3d(0,0,0);
+  }
+
+  ul, li {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .@{prefix}slider-bar-left li {
+    left: 0;
+  }
+
+  .@{prefix}slider-bar-right li {
+    right: 0;
+  }
+
+  .@{prefix}slider-bar-left-pop,
+  .@{prefix}slider-bar-right-pop{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 2;
+    background-color: white;
+    color: #666;
+    text-align: center;
+    transition: all linear .15s;
+  }
+
+  .@{prefix}slider-bar-left-pop {
+    left: -100%;
+  }
+
+  .@{prefix}slider-bar-right-pop {
+    right: -100%;
+  }
+}

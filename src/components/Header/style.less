@@ -1,0 +1,144 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}header-container {
+  position: relative;
+  width: 100%;
+  height: 88 * @unit;
+  line-height: 88 * @unit;
+  text-align: center;
+  overflow: hidden;
+
+  .@{prefix}header-left-btn {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    //padding-left: 20 * @unit;
+    font-size: 28 * @unit;
+    width: 88 * @unit;
+    background-color: transparent;
+    border: none;
+
+    img {
+      width: auto;
+      height: 44 * @unit;
+      margin: 22 * @unit auto;
+    }
+  }
+
+  .@{prefix}header-title {
+    width: 100%;
+    height: 88 * @unit;
+    font-size: 36 * @unit;
+
+    img {
+      width: auto;
+      height: 32 * @unit;
+      margin: 28 * @unit auto;
+    }
+  }
+
+  .@{prefix}header-search-right-btn-group,
+  .@{prefix}header-right-group-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    font-size: 30 * @unit;
+
+    .@{prefix}header-right-btn {
+      float: right;
+      height: 100%;
+      //margin-left: 15 * @unit;
+      width: 88 * @unit;
+      background-color: transparent;
+      border: none;
+    }
+
+    img {
+      width: auto;
+      height: 44 * @unit;
+      margin: 22 * @unit auto;
+    }
+  }
+
+  .@{prefix}header-search-right-btn-group {
+    display: flex;
+    width: 120 * @unit;
+
+    flex-direction: row;
+    justify-content: center;
+
+    .@{prefix}header-search-right-btn {
+      flex-grow: 1;
+    }
+  }
+
+  /* search container style */
+  .@{prefix}header-search-container {
+    position: absolute;
+    right: 120 * @unit;
+    top: 14 * @unit;
+    bottom: 14 * @unit;
+    border-radius: 30 * @unit;
+    font-size: 0;
+    overflow: hidden;
+    transition: left .15s linear;
+    z-index: 1;
+
+    .@{prefix}header-search-icon {
+      left: 20 * @unit;
+      width: 30 * @unit;
+    }
+
+    .@{prefix}header-search-clear {
+      right: 0;
+      width: 74 * @unit;
+    }
+
+    .@{prefix}header-search-icon,
+    .@{prefix}header-search-clear {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      line-height: 60 * @unit;
+      z-index: 2;
+    }
+
+    form {
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 30 * @unit;
+        background-color: #F1F1F1;
+        text-indent: 60 * @unit;
+        line-height: 60 * @unit;
+        font-size: 30 * @unit;
+
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        z-index: 1;
+      }
+
+      input::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        display: none;
+      }
+    }
+
+  }
+
+  //button 兼容
+
+  .@{prefix}button {
+    height: 0.88rem;
+    line-height: 0.88rem;
+    padding: 0;
+    width: 100%;
+  }
+}
