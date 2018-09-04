@@ -1,10 +1,10 @@
 {
-  "name": "L-UI",
-  "version": "0.0.1",
+  "name": "lard-ui",
+  "version": "1.0.2",
   "license": "MIT",
   "description": "固守移动端组件库",
-  "keyword": "react gsg component goodsogood",
-  "author": "GOG",
+  "keyword": ["react", "component", "gsg", "goodsogood"],
+  "author": "GSG",
   "scripts": {
     "dev": "docz dev",
     "build": "docz build"
