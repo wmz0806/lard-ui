@@ -2,14 +2,14 @@ import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import cn from 'classnames';
 import RMCLV from 'rmc-list-view';
-import Zscroller from 'rmc-list-view/lib/Zscroller';
+import * as Zscroller from 'rmc-list-view/lib/Zscroller';
 import Loading from '../Loading';
 import Icon from '../Icon';
 import utils from '../../utils';
 
 
 import config from '../../config';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);
@@ -238,14 +238,14 @@ export const PullLoading = ({text, animate}: any) => (
   </div>
 );
 
-export const FooterLoading = ({text}: any) => (
+ const FooterLoading = ({text}: any) => (
   <div className={cx(`${pre}lv-footer-loading`)}>
     <Icon className={'rotateLoop'} name={'jiazaizhong'}/>
     <span>{text}</span>
   </div>
 );
 
-export const FooterNoneData = () => (
+ const FooterNoneData = () => (
   <div className={cx(`${pre}lv-footer-none-date`)}>
     <i className={cx('line1')}/>
     <i className={cx('line2')}/>
@@ -279,6 +279,10 @@ class ListView extends React.Component<Props, State> {
   };
 
   public static DataSource:any  = RMCLV.DataSource;
+
+  public static FooterLoading:any  = FooterLoading;
+
+  public static FooterNoneData:any  = FooterNoneData;
 
   public state: State = {
     // refreshState: 0, //下拉刷新状态， 0默认状态， 1 松开即可刷新， 2刷新中， 3 刷新完成

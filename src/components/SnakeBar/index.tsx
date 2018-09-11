@@ -7,7 +7,7 @@ import {ISnakeBar, Props, State} from './interface/Interface';
 
 import Icon from '../Icon';
 
-import styles from './style.less';
+import * as styles from './style.less';
 import config from '../../config';
 import * as horn from './images/horn.png';
 

@@ -46,6 +46,6 @@ declare module 'rmc-list-view' {
 
 declare module 'rmc-list-view/lib/Zscroller' {
   const content: any;
-  export default content;
+  export = content;
 }
 

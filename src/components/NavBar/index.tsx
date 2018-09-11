@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import cn from 'classnames';
 
-import styles from './style.less';
+import * as styles from './style.less';
 import config from '../../config';
 
 import {Props, State} from './interface/Interface';
@@ -67,14 +67,15 @@ class NavBar extends Component<Props, State> {
 
   public render(): React.ReactNode {
     const {list} = this.state;
-    const {isSlide, defaultColor, activeColor} = this.props;
+    const {isSlide, defaultColor, activeColor, className, style} = this.props;
     return (
       <ul
-        className={cx(pre + 'nav-bar-container')}
+        className={cx(pre + 'nav-bar-container', className)}
         style={{
           color: defaultColor ? defaultColor : '',
           whiteSpace: isSlide ? 'nowrap' : 'normal',
           overflowX: isSlide ? 'auto' : 'hidden',
+          ...style,
         }}
       >
         {

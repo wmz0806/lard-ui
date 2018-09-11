@@ -18,12 +18,13 @@ const dialog = (params: IDialog) => {
 
 export default {
   dialog: (params: IDialog) => {
-    return dialog(params)
+    const { title, content, buttons, ...others } = params;
+    return dialog({title, content, buttons, options: others});
   },
 
   confirm: (params: IConfirm) => {
     const buttons: IButton[] = [];
-    const {title, content, cancelBtn = {}, sureBtn = {}, options} = params;
+    const {title, content, cancelBtn = {}, sureBtn = {}, ...others} = params;
 
     buttons.push({
       ...cancelBtn,
@@ -38,14 +39,14 @@ export default {
       title,
       content,
       buttons,
-      options,
+      options: others,
     };
 
     return dialog(opt);
   },
 
   alert: (params: IAlert) => {
-    const {title, content, sureBtn = {}, options} = params;
+    const {title, content, sureBtn = {}, ...others} = params;
 
     const button = {
       ...sureBtn,
@@ -56,7 +57,7 @@ export default {
       title,
       content,
       buttons: [button],
-      options,
+      options: others,
     };
     return dialog(opt);
   },

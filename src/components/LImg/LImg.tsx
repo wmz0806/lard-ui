@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import config from '../../config';
 import Utils from '../../utils';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);

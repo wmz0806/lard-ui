@@ -6,7 +6,7 @@ import {State, Props, Config} from '../interface/Interface';
 
 import Icon from '../../Icon';
 
-import styles from '../style.less';
+import * as styles from '../style.less';
 import config from '../../../config';
 
 const cx = cn.bind(styles);
@@ -180,20 +180,6 @@ class Selector extends Component<Props, State> {
         />
       </div>
     );
-
-    /*return (
-      <div className={cx(`${pre}selector-box`, {active: isChoose})}>
-        <Icon
-          name={
-            isRadio
-              ? (isChoose ? 'danxuan-xuanzhong' : 'danxuan-weixuanzhong')
-              : (isChoose ? 'duoxuan-xuanzhong' : 'duoxuan-weixuanzhong')
-          }
-          color={isErr ? '#E4393C' : (isDisabled ? '#DDDDDD' : (isChoose ? '#3B4FA0' : '#999999'))}
-          size={0.4}
-        />
-      </div>
-    );*/
   }
 
   public _renderContent(): React.ReactNode {

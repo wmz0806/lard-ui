@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import {Props, State} from './interface/Interface';
 
-import styles from './style.less';
+import * as styles from './style.less';
 
 import config from '../../config';
 

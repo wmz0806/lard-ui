@@ -11,6 +11,7 @@ module.exports = {
   indexHtml: './index.html',
   // host: '0.0.0.0',
   // port: 3000,
+  protocol: 'http',
   typescript: true,
   plugins: [
     // babel(),

@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import cn from 'classnames';
 import Item from './Item';
 import config from '../../config';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);

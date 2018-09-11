@@ -5,7 +5,7 @@ import cn from 'classnames';
 import Item from './Item';
 import config from '../../config';
 import utils from '../../utils';
-import styles from './style.less';
+import * as styles from './style.less';
 import Timeline from '../../timeline.js'
 
 const pre = config.pre;

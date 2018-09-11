@@ -48,6 +48,12 @@ export interface Props {
    * @default false
    */
   isAutoSlide?: boolean
+
+  /**
+   * 样式
+   */
+  className?: string
+  style?: object
 }
 
 export interface State {

@@ -1,0 +1,41 @@
+---
+name: GoTop
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import GoTop from './index'
+import Button from '../Button'
+
+# GoTop
+回到顶部
+
+### 何时使用
+
+
+## 属性
+
+<PropsTable of={GoTop} />
+
+## 函数
+无
+
+
+## 代码演示
+
+### 一般演示
+
+<Playground>
+  <Button onClick={() => this._goTop.show()}>显示</Button>
+  <Button onClick={() => this._goTop.hide()}>隐藏</Button>
+
+  <GoTop 
+   ref={(e) => (this._goTop = e)}
+   show
+   onClick={() => conseolg.log('点击')}
+  />
+</Playground>
+
+
+
+

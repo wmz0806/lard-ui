@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import styles from './style.less';
+import * as styles from './style.less';
 import config from '../../config';
 
 // css 前缀

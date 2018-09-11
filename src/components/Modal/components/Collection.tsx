@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 import Modal from './Modal';
 import {IModal, IButton} from './interface-modal'
-import styles from '../style.less';
+import * as styles from '../style.less';
 import config from '../../../config';
 
 const cx = cn.bind(styles);
@@ -179,7 +179,7 @@ Collection.create = (props?: any) => {
         title,
         content,
         buttons,
-        ...options
+        ...options,
       })
     },
 

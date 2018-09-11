@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Component} from 'react';
 import cn from 'classnames';
 
-import styles from './style.less';
+import * as styles from './style.less';
 import config from '../../config';
 
 const cx = cn.bind(styles);

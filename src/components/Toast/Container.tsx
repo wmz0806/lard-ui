@@ -5,7 +5,7 @@ import Toast from './Toast';
 import Utils from '../../utils';
 
 import config from '../../config';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);
@@ -49,10 +49,8 @@ class Container extends React.Component<object, StateObj> {
     div.classList.add(cx(`${pre}toast-main-container`));
     document.body.appendChild(div);
 
-    let container:any = ReactDOM.render(<Container {...props} />, div, function (this: Container):any {
-
+    var container:any = ReactDOM.render(<Container {...props} />, div, function (this: Container):any {
       container = this;
-
       container.releaseQueue(); // 释放队列数据
     });
 

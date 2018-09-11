@@ -1,0 +1,131 @@
+---
+name: SelectorTree
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+import SelectorTree from './index'
+import Toast from '../Toast'
+import Btn from '../Button';
+
+import syncData, {asyncData} from './data/data';
+
+import Props from './interface/Props.tsx';
+import Config from './interface/Config';
+
+# SelectorTree
+
+多选树
+
+## Properties 
+<PropsTable of={Props} />
+
+## Config
+<PropsTable of={Config} />
+
+#### ref函数
+
+  1.  **show**(): void
+  >     打开
+  
+  2.  **hide**(): void
+  >     关闭
+  
+  3.  **reset**(): void
+  >     重置
+  
+
+
+## isAsync (异步树)
+
+<Playground>
+  <div style={{
+    width: '100%',
+    height: '10rem',
+    position: 'relative',
+  }}>
+    <Btn
+      onClick={() => window._selectorTree1.show(true)}
+    >
+      打开树
+    </Btn>
+    <SelectorTree
+      ref={r => window._selectorTree1 = r}
+      isShow={false}
+      data={asyncData}
+      isAsync={true}
+      
+      resetBtn={{}}
+      sureBtn={{}}
+      
+      onSure={(choose) => console.log(choose)}
+      onReset={(data) => console.log(data)}
+      
+      onClick={(item, cb) => {
+        console.log(item, '可以用callback 或者 Promise 来进行异步添加元素的操作, 最多支持三级!');
+        if (!item.children && item.index.length <= 2) {
+         Toast.loading();
+         return setTimeout(() => {
+            Toast.hideLoading();
+           cb([
+              {label: '儿子1'},
+              {label: '儿子2'},
+              {label: '儿子3'},
+              {label: '儿子4'},
+              {label: '儿子5'},
+              {label: '儿子6'},
+            ]);
+         }, 200);
+          /*
+          Toast.loading();
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              Toast.hideLoading();
+              resolve([
+                {label: '儿子1'},
+                {label: '儿子2'},
+                {label: '儿子3'},
+                {label: '儿子4'},
+                {label: '儿子5'},
+                {label: '儿子6'},
+              ])
+            }, 250)
+          })
+          */
+        }
+      }}
+    />
+  </div>
+ 
+</Playground>
+  
+
+## !isAsync (同步树)
+
+<Playground>
+  <div style={{
+    width: '100%',
+    height: '10rem',
+    position: 'relative',
+  }}>
+    <Btn
+      onClick={() => window._selectorTree.show(true)}
+    >
+      打开树
+    </Btn>
+    <SelectorTree
+      ref={r => window._selectorTree = r}
+      isShow={false}
+      data={syncData}
+      onClick={item => console.log(item)}
+    />
+  </div>
+ 
+</Playground>
+
+## Properties 
+
+
+
+
+

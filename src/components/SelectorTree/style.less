@@ -1,0 +1,271 @@
+@import "../../theme/theme.less";
+
+@prefix: @lui-prefix;
+
+.@{prefix}selector-tree-main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transition: all .2s ease-in;
+
+  &.@{prefix}s-t-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+  }
+
+  .@{prefix}s-tree-scroll {
+    width: 100%;
+    height: 100%;
+    padding-bottom: .98rem;
+    overflow-y: auto;
+    .@{prefix}s-t-chose-container {
+      width: 100%;
+      padding: 0 .3rem;
+      border-bottom: 1px solid #E5E5E5;
+
+      .@{prefix}s-t-title {
+        width: 100%;
+        height: 1.32rem;
+        line-height: 1.32rem;
+        font-size: .36rem;
+      }
+
+      .@{prefix}s-t-chose {
+        transition: height .2s ease-in;
+
+        .@{prefix}s-t-chose-item {
+          position: relative;
+          display: inline-block;
+          width: 22.75%;
+          height: .64rem;
+          margin: 0 3% .2rem 0;
+          border-radius: .06rem;
+
+          font-size: .26rem;
+          line-height: .64rem;
+          text-align: center;
+          color: white;
+          background-color: #3B4FA0;
+
+          .@{prefix}s-t-chose-text {
+            position: absolute;
+            height: 100%;
+            left: 0;
+            right: .3rem;
+            top: 0;
+          }
+
+          .@{prefix}s-t-chose-delete {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: .3rem;
+            height: 100%;
+            text-align: left;
+          }
+        }
+
+        .@{prefix}s-t-chose-item:nth-of-type(4n) {
+          margin-right: 0;
+        }
+
+        /* 选取选中item时的动画 */
+        .@{prefix}s-t-chose-fade-enter {
+          width: 0;
+          opacity: 0.01;
+        }
+        .@{prefix}s-t-chose-fade-enter-active {
+          width: 22.75%;
+          opacity: 1;
+          transition: all 200ms ease-in;
+        }
+        .@{prefix}s-t-chose-fade-exit {
+          width: 22.75%;
+          opacity: 1;
+        }
+        .@{prefix}s-t-chose-fade-exit-active {
+          width: 0;
+          opacity: 0.01;
+          transition: all 200ms ease-in;
+        }
+
+      }
+    }
+
+    .@{prefix}s-t-tree {
+
+      .@{prefix}s-t-tree-item {
+        width: 100%;
+        line-height: 1.08rem;
+
+        .@{prefix}tree-item-1 {
+          position: relative;
+          width: 100%;
+          height: 1.08rem;
+          padding: 0 .3rem;
+          border-bottom: 1px solid #E5E5E5;
+          .@{prefix}tree-item-title-1 {
+            height: 100%;
+            font-size: .3rem;
+            color: #333;
+          }
+
+          .@{prefix}tree-item-chose-1 {
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            right: 1rem;
+            height: 100%;
+
+            text-align: right;
+            line-height: 1.08rem;
+            font-size: .28rem;
+            color: #3B4FA0;
+          }
+
+          .@{prefix}tree-item-more {
+            height: 100%;
+          }
+        }
+
+        .@{prefix}s-t-tree-2 {
+          width: 100%;
+          background-color: #F8F8F8;
+
+          overflow: hidden;
+          transition: height .2s ease-in;
+
+          .@{prefix}s-t-tree-inner-2 {
+            padding: .3rem .3rem;
+            font-size: 0;
+            line-height: 0;
+
+            .@{prefix}s-t-tree-item-2 {
+              display: inline-block;
+              width: 22.75%;
+              height: .64rem;
+              margin: .1rem 3% .1rem 0;
+              border-radius: .06rem;
+              border: 1px solid #D1D1D1;
+
+              font-size: .26rem;
+              line-height: .64rem;
+              text-align: center;
+              color: #333333;
+              vertical-align: top;
+              background-color: white;
+
+              &.@{prefix}s-t-choose-2 {
+                background-color: #3B4FA0;
+                color: white;
+                border: none;
+              }
+
+              &.@{prefix}s-t-has-child-2 {
+                color: #5F78DB;
+                border-color: #5F78DB;
+              }
+
+              &.@{prefix}s-t-active-2 {
+                color: white;
+                background-color: #5F78DB;
+                border: none;
+              }
+            }
+
+            .@{prefix}s-t-tree-item-2:nth-of-type(4n) {
+              margin-right: 0;
+            }
+          }
+        }
+
+        .@{prefix}s-t-tree-3 {
+          width: 100%;
+          padding: 0 .3rem;
+
+          .@{prefix}s-t-tree-title-3 {
+            width: 100%;
+            height: .96rem;
+            padding: .4rem 0 .3rem 0;
+            border-top: 1px #E5E5E5 dashed;
+
+            line-height: .28rem;
+            font-size: .28rem;
+            color: #999;
+          }
+
+          .@{prefix}s-t-tree-inner-3 {
+
+
+            .@{prefix}s-t-tree-item-3 {
+              display: inline-block;
+              width: 22.75%;
+              height: .64rem;
+              margin: .1rem 3% .1rem 0;
+              border-radius: .06rem;
+              border: 1px solid #D1D1D1;
+
+              font-size: .26rem;
+              line-height: .64rem;
+              text-align: center;
+              color: #333333;
+              vertical-align: top;
+              background-color: white;
+
+              &.@{prefix}s-t-active-3 {
+                border: none;
+                color: white;
+                background-color: #3B4FA0;
+              }
+            }
+
+            .@{prefix}s-t-tree-item-3:nth-of-type(4n) {
+              margin-right: 0;
+            }
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+  .@{prefix}s-t-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: .98rem;
+    border-top: 1px solid #E5E5E5;
+    line-height: .98rem;
+    text-align: center;
+    font-size: .3rem;
+    background-color: white;
+
+    > div {
+      width: 50%;
+      height: 100%;
+      float: left;
+    }
+
+    .@{prefix}s-t-reset  {
+      color: #666666;
+      border-right: 1px solid #E5E5E5;
+    }
+
+    .@{prefix}s-t-sure {
+      color: #3B4FA0;
+    }
+  }
+
+
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import Icon from '../Icon';
 import config from '../../config';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);
@@ -42,6 +42,12 @@ export interface Props {
   value?: number;
 
   /**
+   * 每次加多少
+   * @default 0
+   */
+  step?: number;
+
+  /**
    * 数字发生改变时触发的事件
    * @default undefined
    */
@@ -61,6 +67,7 @@ export default class Digital extends React.Component<Props, State> {
     min: 0,
     max: Number.MAX_VALUE,
     value: 0,
+    step: 1,
   };
 
   public state: State = {
@@ -74,26 +81,7 @@ export default class Digital extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-
-    const {min = 0, max = Number.MAX_VALUE} = props;
-    let {value, disabledLeft, disabledRight} = this.state;
-
-    if (value <= min) {
-      value = min;
-      disabledLeft = true;
-    } else if (value >= max) {
-      value = max;
-      disabledRight = true;
-    }
-
-    this.state = {
-      min,
-      max,
-      disabled: props.disabled,
-      value,
-      disabledLeft,
-      disabledRight,
-    }
+    this.state = this._getStateData(props);
   }
 
 
@@ -101,21 +89,57 @@ export default class Digital extends React.Component<Props, State> {
     // empty
   }
 
+  public componentWillReceiveProps(nextProps: Props): void {
+    const a = this._getStateData(nextProps);
+    this.setState(a);
+  }
+
+  public _getStateData(p: Props): any {
+    const {min = 0, max = Number.MAX_VALUE, value: oldValue} = p;
+    let {value} = this.state;
+
+    value = oldValue;
+
+    const disabledLeft = (value <= min);
+
+    const disabledRight = (value >= max);
+
+    if (value <= min) {
+      value = min;
+    }
+
+    if (value >= max) {
+      value = max;
+    }
+
+    return {
+      min,
+      max,
+      disabled: p.disabled,
+      value,
+      disabledLeft,
+      disabledRight,
+    }
+  }
+
   public _sub(): void {
     if (this.state.disabled || this.state.disabledLeft) return;
+    const {step = 1} = this.props;
     let {value} = this.state;
-    const {min = 0, max = Number.MAX_VALUE} = this.props;
-    value -= 1;
-    this.setState({value, disabledLeft: value <= min, disabledRight: value >= max});
+    const {min, max} = this.state;
+    value -= step;
+
+    this.setState({value: value < min ? min : value, disabledLeft: value <= min, disabledRight: value >= max});
     this.antiShake();
   }
 
   public _add(): void {
     if (this.state.disabled || this.state.disabledRight) return;
+    const {step = 1} = this.props;
     let {value} = this.state;
     const {min, max} = this.state;
-    value += 1;
-    this.setState({value, disabledLeft: value <= min, disabledRight: value >= max});
+    value += step;
+    this.setState({value: value > max ? max : value, disabledLeft: value <= min, disabledRight: value >= max});
     this.antiShake();
   }
 

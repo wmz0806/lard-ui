@@ -6,7 +6,7 @@ import Toast from '../Toast';
 import Item from './Item';
 import UploadLib from './lib.js';
 import config from '../../config';
-import styles from './style.less';
+import * as styles from './style.less';
 
 const pre = config.pre;
 const cx = cn.bind(styles);

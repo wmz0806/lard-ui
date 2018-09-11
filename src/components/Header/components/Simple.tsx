@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import {Simple as Props} from '../interface/Interface'
 
-import styles from '../style.less';
+import * as styles from '../style.less';
 import config from '../../../config';
 
 import Icon from '../../Icon';

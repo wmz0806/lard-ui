@@ -13,7 +13,7 @@ import {
   ICheckbox
 } from '../interface/Interface.Single';
 
-import styles from '../style.less';
+import * as styles from '../style.less';
 import config from '../../../config';
 
 import utils from '../../../utils';
@@ -195,27 +195,32 @@ class SingleSelect extends Component<Props, State> {
   public _renderIcon(): React.ReactNode {
     const {isChoose, allSelectStatus} = this.state;
     const {isErr, isDisabled, type, isAllSelect} = this.props;
-    let color = isErr ? '#E4393C' : (isDisabled ? '#DDDDDD' : (isChoose ? '#3B4FA0' : '#999'));
-    if (isAllSelect) color = allSelectStatus ? '#3B4FA0' : '#999';
-
-    let name = '';
+    const isRadio = type === 'radio';
 
     if (isAllSelect) {
-      name = ['duoxuan-weixuanzhong', 'duoxuan-weiquanxuan', 'duoxuan-xuanzhong'][allSelectStatus];
-    } else if (type === 'radio') {
-      name = isChoose ? 'danxuan-xuanzhong' : 'danxuan-weixuanzhong'
-    } else if (type === 'checkbox') {
-      name = isChoose ? 'duoxuan-xuanzhong' : 'duoxuan-weixuanzhong'
+      const name = ['duoxuan-weixuanzhong', 'duoxuan-weiquanxuan', 'duoxuan-xuanzhong'][allSelectStatus];
+      return (
+        <Icon
+          name={name}
+          size={0.4}
+          color={allSelectStatus ? '#3B4FA0' : '#999'}
+          style={{position: 'absolute'}}
+        />
+      )
+    } else {
+      return (
+        <div className={cx(`${pre}selector-box`, isChoose && 'active')}>
+          <Icon
+            name={isRadio ? 'danxuan-xuanzhong' : 'duoxuan-xuanzhong'}
+            className={cx({error: isErr, disabled: isDisabled, choose: true})}
+          />
+          <Icon
+            name={isRadio ? 'danxuan-weixuanzhong' : 'duoxuan-weixuanzhong'}
+            className={cx({error: isErr, disabled: isDisabled, choose: false})}
+          />
+        </div>
+      )
     }
-
-    return (
-      <Icon
-        name={name}
-        size={0.4}
-        color={color}
-        style={{position: 'absolute'}}
-      />
-    )
   }
 
   public render(): React.ReactNode {

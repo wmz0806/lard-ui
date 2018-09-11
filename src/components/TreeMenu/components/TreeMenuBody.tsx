@@ -10,7 +10,7 @@ import {
 } from './helper';
 import {IBody, BodyConfig, BodyProps as Props, BodyState as State} from '../interface/Interface';
 
-import styles from '../style.less';
+import * as styles from '../style.less';
 import config from '../../../config';
 
 
